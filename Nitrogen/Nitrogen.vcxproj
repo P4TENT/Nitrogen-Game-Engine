@@ -76,7 +76,7 @@
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>ntgpch.h</PrecompiledHeaderFile>
       <WarningLevel>Level3</WarningLevel>
-      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;NTG_PLATFORM_WINDOWS;NTG_BUILD_DLL;GLFW_INCLUDE_NONE;NTG_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;NTG_ENABLE_ASSERTS;NTG_PLATFORM_WINDOWS;NTG_BUILD_DLL;GLFW_INCLUDE_NONE;NTG_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalIncludeDirectories>src;vendor\spdlog\include;vendor\GLFW\include;vendor\Glad\include;vendor\imgui;vendor\glm;vendor\stb_image;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
       <Optimization>Disabled</Optimization>
@@ -98,7 +98,7 @@
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>ntgpch.h</PrecompiledHeaderFile>
       <WarningLevel>Level3</WarningLevel>
-      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;NTG_PLATFORM_WINDOWS;NTG_BUILD_DLL;GLFW_INCLUDE_NONE;NTG_RELEASE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;NTG_ENABLE_ASSERTS;NTG_PLATFORM_WINDOWS;NTG_BUILD_DLL;GLFW_INCLUDE_NONE;NTG_RELEASE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalIncludeDirectories>src;vendor\spdlog\include;vendor\GLFW\include;vendor\Glad\include;vendor\imgui;vendor\glm;vendor\stb_image;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <Optimization>Full</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
@@ -124,7 +124,7 @@
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>ntgpch.h</PrecompiledHeaderFile>
       <WarningLevel>Level3</WarningLevel>
-      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;NTG_PLATFORM_WINDOWS;NTG_BUILD_DLL;GLFW_INCLUDE_NONE;NTG_DIST;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;NTG_ENABLE_ASSERTS;NTG_PLATFORM_WINDOWS;NTG_BUILD_DLL;GLFW_INCLUDE_NONE;NTG_DIST;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalIncludeDirectories>src;vendor\spdlog\include;vendor\GLFW\include;vendor\Glad\include;vendor\imgui;vendor\glm;vendor\stb_image;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <Optimization>Full</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
@@ -149,12 +149,14 @@
     <ClInclude Include="src\Core\Core.h" />
     <ClInclude Include="src\Core\CoreApp.h" />
     <ClInclude Include="src\Core\EntryPoint.h" />
+    <ClInclude Include="src\Core\Log.h" />
     <ClInclude Include="src\Nitrogen.h" />
     <ClInclude Include="src\ntgpch.h" />
     <ClInclude Include="vendor\stb_image\stb_image.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Core\CoreApp.cpp" />
+    <ClCompile Include="src\Core\Log.cpp" />
     <ClCompile Include="src\ntgpch.cpp">
       <PrecompiledHeader>Create</PrecompiledHeader>
     </ClCompile>
