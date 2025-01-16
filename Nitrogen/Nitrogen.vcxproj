@@ -149,7 +149,13 @@
     <ClInclude Include="src\Core\Core.h" />
     <ClInclude Include="src\Core\CoreApp.h" />
     <ClInclude Include="src\Core\EntryPoint.h" />
+    <ClInclude Include="src\Core\KeyCode.h" />
     <ClInclude Include="src\Core\Log.h" />
+    <ClInclude Include="src\Core\MouseCode.h" />
+    <ClInclude Include="src\Events\AppEvent.h" />
+    <ClInclude Include="src\Events\Event.h" />
+    <ClInclude Include="src\Events\KeyEvent.h" />
+    <ClInclude Include="src\Events\MouseEvent.h" />
     <ClInclude Include="src\Nitrogen.h" />
     <ClInclude Include="src\ntgpch.h" />
     <ClInclude Include="vendor\stb_image\stb_image.h" />

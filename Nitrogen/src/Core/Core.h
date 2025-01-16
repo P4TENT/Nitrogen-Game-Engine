@@ -4,6 +4,8 @@
 
 #include <memory>
 
+#define BIT(x) (1 << x)
+
 #ifdef NTG_ENABLE_ASSERTS
 	#define NTG_ASSERT(x, ...) { if(!(x)) { NTG_ERROR("Assertion Failed: {0}", __VA_ARGS__); __debugbreak(); } }
 	#define NTG_CORE_ASSERT(x, ...) { if(!(x)) { NTG_CORE_ERROR("Assertion Failed: {0}", __VA_ARGS__); __debugbreak(); } }

@@ -36,6 +36,12 @@
     <ClInclude Include="vendor\stb_image\stb_image.h">
       <Filter>vendor\stb_image</Filter>
     </ClInclude>
+    <ClInclude Include="src\Events\Event.h" />
+    <ClInclude Include="src\Events\AppEvent.h" />
+    <ClInclude Include="src\Events\KeyEvent.h" />
+    <ClInclude Include="src\Events\MouseEvent.h" />
+    <ClInclude Include="src\Core\KeyCode.h" />
+    <ClInclude Include="src\Core\MouseCode.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Core\CoreApp.cpp">
