@@ -137,6 +137,9 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\Sandbox.cpp" />
+  </ItemGroup>
+  <ItemGroup>
     <ProjectReference Include="..\Nitrogen\Nitrogen.vcxproj">
       <Project>{CB054921-B7D2-A32C-E0EB-91D4CC17D9BA}</Project>
     </ProjectReference>
