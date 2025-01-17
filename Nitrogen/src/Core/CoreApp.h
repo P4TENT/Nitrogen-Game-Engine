@@ -1,6 +1,7 @@
 #pragma once
 
 #include "Core.h"
+#include "Window.h"
 
 namespace Nitrogen {
 
@@ -10,13 +11,18 @@ namespace Nitrogen {
 		Application();
 
 		void Run();
+		void OnEvent(Event& e);
 
-		virtual void OnUpdate() = 0;
 
 	private:
 		static Application* m_Instance;
 
-		bool running = true;
+		bool m_Running = true;
+
+		Scope<Window> m_Window;
+	
+	private:
+		bool OnWindowClose(WindowCloseEvent& e);
 	};
 
 	Application* CreateApplication();
