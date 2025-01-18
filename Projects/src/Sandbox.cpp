@@ -12,7 +12,8 @@ public:
 
 	void OnUpdate() override
 	{
-		NTG_CORE_INFO("ExampleLayer::Update");
+		if (Nitrogen::Input::IsKeyPressed(Nitrogen::Key::A))
+			NTG_TRACE("\"A\" pressed!");
 	}
 
 	void OnEvent(Nitrogen::Event& event) override

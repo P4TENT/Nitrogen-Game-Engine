@@ -18,6 +18,9 @@ namespace Nitrogen {
 		void PushLayer(Layer* layer);
 		void PushOverlay(Layer* layer);
 
+		inline Window& GetWindow() { return *m_Window; }
+		inline static Application& Get() { return *m_Instance; }
+
 	private:
 		static Application* m_Instance;
 
@@ -32,5 +35,4 @@ namespace Nitrogen {
 	};
 
 	Application* CreateApplication();
-
 }

@@ -17,6 +17,8 @@
 #endif
 
 namespace Nitrogen {
+	using KeyCode = unsigned short;
+
 	template<typename T>
 	using Scope = std::unique_ptr<T>;
 

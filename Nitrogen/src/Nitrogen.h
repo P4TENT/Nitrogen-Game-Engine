@@ -10,6 +10,8 @@
 #include "Core/Layer.h"
 #include "Core/LayerStack.h"
 
+#include "Core/Input/Input.h"
+
 //-Entry-Point-------------
 #include "Core/EntryPoint.h"
 //-Entry-Point-------------

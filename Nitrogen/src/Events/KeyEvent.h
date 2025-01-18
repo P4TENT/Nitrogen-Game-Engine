@@ -1,7 +1,7 @@
 #pragma once
 
 #include "Event.h"
-#include "Core/KeyCode.h"
+#include "Core/KeyCodes.h"
 
 namespace Nitrogen {
 
