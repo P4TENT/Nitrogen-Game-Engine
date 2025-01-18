@@ -3,6 +3,7 @@
 #include "Core/Window.h"
 
 #include <GLFW/glfw3.h>
+#include "Renderer/GraphicsContext.h"
 
 namespace Nitrogen {
 
@@ -40,6 +41,8 @@ namespace Nitrogen {
 		};
 
 		WindowData m_Data;
+
+		GraphicsContext* m_Context;
 	};
 
 }

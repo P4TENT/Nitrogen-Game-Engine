@@ -12,8 +12,8 @@ public:
 
 	void OnUpdate() override
 	{
-		if (Nitrogen::Input::IsKeyPressed(Nitrogen::Key::A))
-			NTG_TRACE("\"A\" pressed!");
+		//if (Nitrogen::Input::IsKeyPressed(Nitrogen::Key::A))
+		//	NTG_TRACE("\"A\" pressed!");
 	}
 
 	void OnEvent(Nitrogen::Event& event) override

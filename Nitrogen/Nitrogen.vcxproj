@@ -162,7 +162,9 @@
     <ClInclude Include="src\Events\MouseEvent.h" />
     <ClInclude Include="src\Nitrogen.h" />
     <ClInclude Include="src\ntgpch.h" />
+    <ClInclude Include="src\Platform\OpenGL\glGraphicsContext.h" />
     <ClInclude Include="src\Platform\Windows\WindowsWindow.h" />
+    <ClInclude Include="src\Renderer\GraphicsContext.h" />
     <ClInclude Include="vendor\stb_image\stb_image.h" />
   </ItemGroup>
   <ItemGroup>
@@ -174,6 +176,7 @@
     <ClCompile Include="src\ntgpch.cpp">
       <PrecompiledHeader>Create</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="src\Platform\OpenGL\glGraphicsContext.cpp" />
     <ClCompile Include="src\Platform\Windows\WindowsInput.cpp" />
     <ClCompile Include="src\Platform\Windows\WindowsInput.h" />
     <ClCompile Include="src\Platform\Windows\WindowsWindow.cpp" />

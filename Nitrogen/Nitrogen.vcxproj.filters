@@ -47,6 +47,8 @@
     <ClInclude Include="src\Core\Layer.h" />
     <ClInclude Include="src\Core\LayerStack.h" />
     <ClInclude Include="src\Core\Input\Input.h" />
+    <ClInclude Include="src\Renderer\GraphicsContext.h" />
+    <ClInclude Include="src\Platform\OpenGL\glGraphicsContext.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Core\CoreApp.cpp">
@@ -67,5 +69,6 @@
     <ClCompile Include="src\Core\LayerStack.cpp" />
     <ClCompile Include="src\Platform\Windows\WindowsInput.h" />
     <ClCompile Include="src\Platform\Windows\WindowsInput.cpp" />
+    <ClCompile Include="src\Platform\OpenGL\glGraphicsContext.cpp" />
   </ItemGroup>
 </Project>

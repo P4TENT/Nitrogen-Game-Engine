@@ -5,6 +5,8 @@
 #include "Events/MouseEvent.h"
 #include "Events/KeyEvent.h"
 
+#include "Platform/OpenGL/glGraphicsContext.h"	
+
 namespace Nitrogen {
 
 	static uint8_t s_GLFWWindowCount = 0;
@@ -39,7 +41,9 @@ namespace Nitrogen {
 
 		m_Window = glfwCreateWindow((int)props.Width, (int)props.Height, m_Data.Title.c_str(), nullptr, nullptr);
 		
-		glfwMakeContextCurrent(m_Window);
+		//glfwMakeContextCurrent(m_Window);
+		m_Context = new glGraphicsContext(m_Window);
+		m_Context->Init();
 
 		glfwSetWindowUserPointer(m_Window, &m_Data);
 		//SetVSync(1);
@@ -144,7 +148,7 @@ namespace Nitrogen {
 	void WindowsWindow::OnUpdate()
 	{
 		glfwPollEvents();
-		glfwSwapBuffers(m_Window);
+		m_Context->SwapBuffers();
 	}
 
 	void WindowsWindow::SetVSync(bool enabled)
