@@ -2,6 +2,8 @@
 
 #include "Core.h"
 #include "Window.h"
+#include "Layer.h"
+#include "LayerStack.h"
 
 namespace Nitrogen {
 
@@ -13,6 +15,8 @@ namespace Nitrogen {
 		void Run();
 		void OnEvent(Event& e);
 
+		void PushLayer(Layer* layer);
+		void PushOverlay(Layer* layer);
 
 	private:
 		static Application* m_Instance;
@@ -20,6 +24,8 @@ namespace Nitrogen {
 		bool m_Running = true;
 
 		Scope<Window> m_Window;
+
+		LayerStack m_LayerStack;
 	
 	private:
 		bool OnWindowClose(WindowCloseEvent& e);

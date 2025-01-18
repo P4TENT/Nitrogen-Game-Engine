@@ -3,6 +3,7 @@
 #include <string>
 #include <sstream>
 #include <functional>
+#include "Core/Core.h"
 
 namespace Nitrogen {
 

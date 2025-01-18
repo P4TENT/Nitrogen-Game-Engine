@@ -7,6 +7,9 @@
 #include "Events/KeyEvent.h"
 #include "Events/MouseEvent.h"
 
+#include "Core/Layer.h"
+#include "Core/LayerStack.h"
+
 //-Entry-Point-------------
 #include "Core/EntryPoint.h"
 //-Entry-Point-------------

@@ -2,17 +2,36 @@
 
 #include <iostream>
 
+class BasicLayer : public Nitrogen::Layer
+{
+public:
+	BasicLayer()
+		: Layer("Example")
+	{
+	}
+
+	void OnUpdate() override
+	{
+		NTG_CORE_INFO("ExampleLayer::Update");
+	}
+
+	void OnEvent(Nitrogen::Event& event) override
+	{
+		//NTG_CORE_TRACE("{0}", event.ToString());
+	}
+};
+
 class Sandbox : public Nitrogen::Application
 {
 public:
-	void OnUpdate() override
+	Sandbox()
 	{
-		Nitrogen::WindowResizeEvent e(1280, 720);
+		PushLayer(new BasicLayer());
+	}
 
-		if (e.IsInCategory(Nitrogen::EventCategoryApplication))
-		{
-			NTG_TRACE(e.ToString());
-		}
+	~Sandbox()
+	{
+
 	}
 };
 

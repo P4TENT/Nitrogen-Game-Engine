@@ -12,7 +12,7 @@ namespace Nitrogen {
 		std::string Title;
 		uint32_t Width, Height;
 
-		WindowStructure(const std::string& title = "Nitrogen Engine", uint32_t width = 1600, uint32_t height = 700)
+		WindowStructure(const std::string& title = "Nitrogen Engine", uint32_t width = 1280, uint32_t height = 720)
 			: Title(title), Width(width), Height(height) {}
 	};
 
