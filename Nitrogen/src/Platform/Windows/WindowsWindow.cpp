@@ -1,22 +1,26 @@
 #include "ntgpch.h"
 #include "WindowsWindow.h"
 
-#include "Events/AppEvent.h"
-#include "Events/MouseEvent.h"
-#include "Events/KeyEvent.h"
+#include "Nitrogen/Core/Events/AppEvent.h"
+#include "Nitrogen/Core/Events/MouseEvent.h"
+#include "Nitrogen/Core/Events/KeyEvent.h"
+#include "Platform/OpenGL/OpenGLContext.h"
 
-#include "Platform/OpenGL/glGraphicsContext.h"	
+namespace Nitrogen{
 
-namespace Nitrogen {
-
-	static uint8_t s_GLFWWindowCount = 0;
+	static bool s_GLFWInitialized = false;
 
 	static void GLFWErrorCallback(int error, const char* description)
 	{
-		NTG_CORE_ERROR("GLFW Error ({0}): {1}", error, description);
+		NTG_CORE_ERROR("Nitro::GLFWErrorCallback(): GLFW Error ({0}): {1}", error, description);
 	}
 
-	WindowsWindow::WindowsWindow(const WindowStructure& props)
+	Window* Window::Create(const WindowProps& props)
+	{
+		return new WindowsWindow(props);
+	}
+
+	WindowsWindow::WindowsWindow(const WindowProps& props)
 	{
 		Init(props);
 	}
@@ -26,27 +30,30 @@ namespace Nitrogen {
 		Shutdown();
 	}
 
-	void WindowsWindow::Init(const WindowStructure& props)
+	void WindowsWindow::Init(const WindowProps& props)
 	{
 		m_Data.Title = props.Title;
 		m_Data.Width = props.Width;
 		m_Data.Height = props.Height;
-		m_Data.VSync = true;
 
 		NTG_CORE_INFO("Creating window {0} ({1}, {2})", props.Title, props.Width, props.Height);
 
-		int success = glfwInit();
-		NTG_CORE_ASSERT(success, 1, "Could not initialize GLFW!");
-		glfwSetErrorCallback(GLFWErrorCallback);
+
+		if (!s_GLFWInitialized)
+		{
+			// TODO: glfwTerminate on system shutdown
+			int success = glfwInit();
+			NTG_CORE_ASSERT(success, "Could not intialize GLFW!");
+			glfwSetErrorCallback(GLFWErrorCallback);
+			s_GLFWInitialized = true;
+		}
 
 		m_Window = glfwCreateWindow((int)props.Width, (int)props.Height, m_Data.Title.c_str(), nullptr, nullptr);
-		
-		//glfwMakeContextCurrent(m_Window);
-		m_Context = new glGraphicsContext(m_Window);
+		m_Context = new OpenGLContext(m_Window);
 		m_Context->Init();
-
+		// ^
 		glfwSetWindowUserPointer(m_Window, &m_Data);
-		//SetVSync(1);
+		SetVSync(true);
 
 		// Set GLFW callbacks
 		glfwSetWindowSizeCallback(m_Window, [](GLFWwindow* window, int width, int height)
@@ -56,6 +63,13 @@ namespace Nitrogen {
 				data.Height = height;
 
 				WindowResizeEvent event(width, height);
+				data.EventCallback(event);
+			});
+
+		glfwSetCharCallback(m_Window, [](GLFWwindow* window, unsigned int keycode)
+			{
+				WindowData& data = *(WindowData*)glfwGetWindowUserPointer(window);
+				KeyTypedEvent event(keycode);
 				data.EventCallback(event);
 			});
 
@@ -86,19 +100,11 @@ namespace Nitrogen {
 				}
 				case GLFW_REPEAT:
 				{
-					KeyPressedEvent event(key, true);
+					KeyPressedEvent event(key, 1);
 					data.EventCallback(event);
 					break;
 				}
 				}
-			});
-
-		glfwSetCharCallback(m_Window, [](GLFWwindow* window, unsigned int keycode)
-			{
-				WindowData& data = *(WindowData*)glfwGetWindowUserPointer(window);
-
-				KeyTypedEvent event(keycode);
-				data.EventCallback(event);
 			});
 
 		glfwSetMouseButtonCallback(m_Window, [](GLFWwindow* window, int button, int action, int mods)
@@ -142,7 +148,6 @@ namespace Nitrogen {
 	void WindowsWindow::Shutdown()
 	{
 		glfwDestroyWindow(m_Window);
-		glfwTerminate();
 	}
 
 	void WindowsWindow::OnUpdate()
@@ -165,5 +170,4 @@ namespace Nitrogen {
 	{
 		return m_Data.VSync;
 	}
-
 }

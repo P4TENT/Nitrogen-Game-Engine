@@ -43,8 +43,7 @@ project "Nitrogen"
 
 	defines 
 	{
-		"_CRT_SECURE_NO_WARNINGS",
-    "NTG_ENABLE_ASSERTS"
+		"_CRT_SECURE_NO_WARNINGS"
 	}
 
 	includedirs
@@ -86,8 +85,8 @@ project "Nitrogen"
 		runtime "Release"
 		optimize "on"
 
-project "Projects"
-	location "Projects"
+project "Sandbox"
+	location "Sandbox"
 	kind "ConsoleApp"
 	language "C++"
 	cppdialect "C++17"
@@ -136,4 +135,3 @@ project "Projects"
 		defines "NTG_DIST"
 		runtime "Release"
 		optimize "on"
-

@@ -15,10 +15,10 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{CB054921-B7D2-A32C-E0EB-91D4CC17D9BA}</ProjectGuid>
+    <ProjectGuid>{D107BE0D-3D1C-E6BE-069E-891E7271E2EF}</ProjectGuid>
     <IgnoreWarnCompileDuplicatedFilename>true</IgnoreWarnCompileDuplicatedFilename>
     <Keyword>Win32Proj</Keyword>
-    <RootNamespace>Nitrogen</RootNamespace>
+    <RootNamespace>Nitro</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -54,29 +54,29 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <OutDir>..\bin\Debug-windows-x86_64\Nitrogen\</OutDir>
-    <IntDir>..\bin-int\Debug-windows-x86_64\Nitrogen\</IntDir>
-    <TargetName>Nitrogen</TargetName>
+    <OutDir>..\bin\Debug-windows-x86_64\Nitro\</OutDir>
+    <IntDir>..\bin-int\Debug-windows-x86_64\Nitro\</IntDir>
+    <TargetName>Nitro</TargetName>
     <TargetExt>.lib</TargetExt>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
-    <OutDir>..\bin\Release-windows-x86_64\Nitrogen\</OutDir>
-    <IntDir>..\bin-int\Release-windows-x86_64\Nitrogen\</IntDir>
-    <TargetName>Nitrogen</TargetName>
+    <OutDir>..\bin\Release-windows-x86_64\Nitro\</OutDir>
+    <IntDir>..\bin-int\Release-windows-x86_64\Nitro\</IntDir>
+    <TargetName>Nitro</TargetName>
     <TargetExt>.lib</TargetExt>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Dist|x64'">
-    <OutDir>..\bin\Dist-windows-x86_64\Nitrogen\</OutDir>
-    <IntDir>..\bin-int\Dist-windows-x86_64\Nitrogen\</IntDir>
-    <TargetName>Nitrogen</TargetName>
+    <OutDir>..\bin\Dist-windows-x86_64\Nitro\</OutDir>
+    <IntDir>..\bin-int\Dist-windows-x86_64\Nitro\</IntDir>
+    <TargetName>Nitro</TargetName>
     <TargetExt>.lib</TargetExt>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
       <PrecompiledHeader>Use</PrecompiledHeader>
-      <PrecompiledHeaderFile>ntgpch.h</PrecompiledHeaderFile>
+      <PrecompiledHeaderFile>ngpch.h</PrecompiledHeaderFile>
       <WarningLevel>Level3</WarningLevel>
-      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;NTG_PLATFORM_WINDOWS;NTG_BUILD_DLL;GLFW_INCLUDE_NONE;NTG_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;NG_PLATFORM_WINDOWS;NG_BUILD_DLL;GLFW_INCLUDE_NONE;NG_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalIncludeDirectories>src;vendor\spdlog\include;vendor\GLFW\include;vendor\Glad\include;vendor\imgui;vendor\glm;vendor\stb_image;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
       <Optimization>Disabled</Optimization>
@@ -96,9 +96,9 @@
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
       <PrecompiledHeader>Use</PrecompiledHeader>
-      <PrecompiledHeaderFile>ntgpch.h</PrecompiledHeaderFile>
+      <PrecompiledHeaderFile>ngpch.h</PrecompiledHeaderFile>
       <WarningLevel>Level3</WarningLevel>
-      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;NTG_PLATFORM_WINDOWS;NTG_BUILD_DLL;GLFW_INCLUDE_NONE;NTG_RELEASE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;NG_PLATFORM_WINDOWS;NG_BUILD_DLL;GLFW_INCLUDE_NONE;NG_RELEASE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalIncludeDirectories>src;vendor\spdlog\include;vendor\GLFW\include;vendor\Glad\include;vendor\imgui;vendor\glm;vendor\stb_image;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <Optimization>Full</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
@@ -122,9 +122,9 @@
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Dist|x64'">
     <ClCompile>
       <PrecompiledHeader>Use</PrecompiledHeader>
-      <PrecompiledHeaderFile>ntgpch.h</PrecompiledHeaderFile>
+      <PrecompiledHeaderFile>ngpch.h</PrecompiledHeaderFile>
       <WarningLevel>Level3</WarningLevel>
-      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;NTG_PLATFORM_WINDOWS;NTG_BUILD_DLL;GLFW_INCLUDE_NONE;NTG_DIST;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;NG_PLATFORM_WINDOWS;NG_BUILD_DLL;GLFW_INCLUDE_NONE;NG_DIST;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalIncludeDirectories>src;vendor\spdlog\include;vendor\GLFW\include;vendor\Glad\include;vendor\imgui;vendor\glm;vendor\stb_image;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <Optimization>Full</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
@@ -146,32 +146,32 @@
     </Lib>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="src\Nitrogen.h" />
-    <ClInclude Include="src\Nitrogen\Core\CoreApp.h" />
-    <ClInclude Include="src\Nitrogen\Core\Core.h" />
-    <ClInclude Include="src\Nitrogen\Core\Timestep.h" />
-    <ClInclude Include="src\Nitrogen\Core\EntryPoint.h" />
-    <ClInclude Include="src\Nitrogen\Core\Events\AppEvent.h" />
-    <ClInclude Include="src\Nitrogen\Core\Events\Event.h" />
-    <ClInclude Include="src\Nitrogen\Core\Events\KeyEvent.h" />
-    <ClInclude Include="src\Nitrogen\Core\Events\MouseEvent.h" />
-    <ClInclude Include="src\Nitrogen\ImGui\ImGuiLayer.h" />
-    <ClInclude Include="src\Nitrogen\Core\Input\Input.h" />
-    <ClInclude Include="src\Nitrogen\Core\Input\KeyCodes.h" />
-    <ClInclude Include="src\Nitrogen\Core\Input\MouseButtonCodes.h" />
-    <ClInclude Include="src\Nitrogen\Core\Layer.h" />
-    <ClInclude Include="src\Nitrogen\Core\LayerStack.h" />
-    <ClInclude Include="src\Nitrogen\Core\Log.h" />
-    <ClInclude Include="src\Nitrogen\Renderer\Buffer.h" />
-    <ClInclude Include="src\Nitrogen\Renderer\GraphicsContext.h" />
-    <ClInclude Include="src\Nitrogen\Renderer\OrthographicCamera.h" />
-    <ClInclude Include="src\Nitrogen\Renderer\RenderAPI.h" />
-    <ClInclude Include="src\Nitrogen\Renderer\Renderer.h" />
-    <ClInclude Include="src\Nitrogen\Renderer\RendererCommand.h" />
-    <ClInclude Include="src\Nitrogen\Renderer\Shader.h" />
-    <ClInclude Include="src\Nitrogen\Renderer\Texture.h" />
-    <ClInclude Include="src\Nitrogen\Renderer\VertexArray.h" />
-    <ClInclude Include="src\Nitrogen\Core\Window.h" />
+    <ClInclude Include="src\Nitro.h" />
+    <ClInclude Include="src\Nitro\Application.h" />
+    <ClInclude Include="src\Nitro\Core\Core.h" />
+    <ClInclude Include="src\Nitro\Core\Timestep.h" />
+    <ClInclude Include="src\Nitro\EntryPoint.h" />
+    <ClInclude Include="src\Nitro\Events\AppEvent.h" />
+    <ClInclude Include="src\Nitro\Events\Event.h" />
+    <ClInclude Include="src\Nitro\Events\KeyEvent.h" />
+    <ClInclude Include="src\Nitro\Events\MouseEvent.h" />
+    <ClInclude Include="src\Nitro\ImGui\ImGuiLayer.h" />
+    <ClInclude Include="src\Nitro\Input\Input.h" />
+    <ClInclude Include="src\Nitro\Input\KeyCodes.h" />
+    <ClInclude Include="src\Nitro\Input\MouseButtonCodes.h" />
+    <ClInclude Include="src\Nitro\Layer.h" />
+    <ClInclude Include="src\Nitro\LayerStack.h" />
+    <ClInclude Include="src\Nitro\Log.h" />
+    <ClInclude Include="src\Nitro\Renderer\Buffer.h" />
+    <ClInclude Include="src\Nitro\Renderer\GraphicsContext.h" />
+    <ClInclude Include="src\Nitro\Renderer\OrthographicCamera.h" />
+    <ClInclude Include="src\Nitro\Renderer\RenderAPI.h" />
+    <ClInclude Include="src\Nitro\Renderer\Renderer.h" />
+    <ClInclude Include="src\Nitro\Renderer\RendererCommand.h" />
+    <ClInclude Include="src\Nitro\Renderer\Shader.h" />
+    <ClInclude Include="src\Nitro\Renderer\Texture.h" />
+    <ClInclude Include="src\Nitro\Renderer\VertexArray.h" />
+    <ClInclude Include="src\Nitro\Window.h" />
     <ClInclude Include="src\Platform\OpenGL\OpenGLBuffer.h" />
     <ClInclude Include="src\Platform\OpenGL\OpenGLContext.h" />
     <ClInclude Include="src\Platform\OpenGL\OpenGLRendererAPI.h" />
@@ -180,24 +180,24 @@
     <ClInclude Include="src\Platform\OpenGL\OpenGLVertexArray.h" />
     <ClInclude Include="src\Platform\Windows\WindowsInput.h" />
     <ClInclude Include="src\Platform\Windows\WindowsWindow.h" />
-    <ClInclude Include="src\ntgpch.h" />
+    <ClInclude Include="src\ngpch.h" />
     <ClInclude Include="vendor\stb_image\stb_image.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\Nitrogen\Core\CoreApp.cpp" />
-    <ClCompile Include="src\Nitrogen\ImGui\ImGuiBuild.cpp" />
-    <ClCompile Include="src\Nitrogen\ImGui\ImGuiLayer.cpp" />
-    <ClCompile Include="src\Nitrogen\Core\Layer.cpp" />
-    <ClCompile Include="src\Nitrogen\Core\LayerStack.cpp" />
-    <ClCompile Include="src\Nitrogen\Core\Log.cpp" />
-    <ClCompile Include="src\Nitrogen\Renderer\Buffer.cpp" />
-    <ClCompile Include="src\Nitrogen\Renderer\OrthographicCamera.cpp" />
-    <ClCompile Include="src\Nitrogen\Renderer\RenderAPI.cpp" />
-    <ClCompile Include="src\Nitrogen\Renderer\Renderer.cpp" />
-    <ClCompile Include="src\Nitrogen\Renderer\RendererCommand.cpp" />
-    <ClCompile Include="src\Nitrogen\Renderer\Shader.cpp" />
-    <ClCompile Include="src\Nitrogen\Renderer\Texture.cpp" />
-    <ClCompile Include="src\Nitrogen\Renderer\VertexArray.cpp" />
+    <ClCompile Include="src\Nitro\Application.cpp" />
+    <ClCompile Include="src\Nitro\ImGui\ImGuiBuild.cpp" />
+    <ClCompile Include="src\Nitro\ImGui\ImGuiLayer.cpp" />
+    <ClCompile Include="src\Nitro\Layer.cpp" />
+    <ClCompile Include="src\Nitro\LayerStack.cpp" />
+    <ClCompile Include="src\Nitro\Log.cpp" />
+    <ClCompile Include="src\Nitro\Renderer\Buffer.cpp" />
+    <ClCompile Include="src\Nitro\Renderer\OrthographicCamera.cpp" />
+    <ClCompile Include="src\Nitro\Renderer\RenderAPI.cpp" />
+    <ClCompile Include="src\Nitro\Renderer\Renderer.cpp" />
+    <ClCompile Include="src\Nitro\Renderer\RendererCommand.cpp" />
+    <ClCompile Include="src\Nitro\Renderer\Shader.cpp" />
+    <ClCompile Include="src\Nitro\Renderer\Texture.cpp" />
+    <ClCompile Include="src\Nitro\Renderer\VertexArray.cpp" />
     <ClCompile Include="src\Platform\OpenGL\OpenGLBuffer.cpp" />
     <ClCompile Include="src\Platform\OpenGL\OpenGLContext.cpp" />
     <ClCompile Include="src\Platform\OpenGL\OpenGLRendererAPI.cpp" />
@@ -206,7 +206,7 @@
     <ClCompile Include="src\Platform\OpenGL\OpenGLVertexArray.cpp" />
     <ClCompile Include="src\Platform\Windows\WindowsInput.cpp" />
     <ClCompile Include="src\Platform\Windows\WindowsWindow.cpp" />
-    <ClCompile Include="src\ntgpch.cpp">
+    <ClCompile Include="src\ngpch.cpp">
       <PrecompiledHeader>Create</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="vendor\stb_image\stb_image.cpp" />

@@ -1,0 +1,12 @@
+[submodule "Nitro/vendor/spdlog"]
+	path = Nitro/vendor/spdlog
+	url = https://github.com/gabime/spdlog
+[submodule "Nitro/vendor/GLFW"]
+	path = Nitro/vendor/GLFW
+	url = https://github.com/TheCherno/GLFW
+[submodule "Nitro/vendor/imgui"]
+	path = Nitro/vendor/imgui
+	url = https://github.com/TheCherno/imgui
+[submodule "Nitro/vendor/glm"]
+	path = Nitro/vendor/glm
+	url = https://github.com/g-truc/glm

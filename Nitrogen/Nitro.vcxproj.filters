@@ -1,0 +1,225 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="src">
+      <UniqueIdentifier>{2DAB880B-99B4-887C-2230-9F7C8E38947C}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Nitro">
+      <UniqueIdentifier>{28167BB3-9480-2F2A-DDBE-E0CF49680D7F}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Nitro\Core">
+      <UniqueIdentifier>{8053A0CA-6C21-94D0-55B5-04F741227035}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Nitro\Events">
+      <UniqueIdentifier>{0C4525F9-F83D-444B-2170-29D00DC82357}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Nitro\ImGui">
+      <UniqueIdentifier>{5289151F-BE14-83E3-C725-06D83330DFE3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Nitro\Input">
+      <UniqueIdentifier>{27C4161F-934F-84E3-9C60-07D8086BE0E3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Nitro\Renderer">
+      <UniqueIdentifier>{CEC685CE-BAAA-4624-230B-41770F0E31A6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Platform">
+      <UniqueIdentifier>{21CA02E5-0D2D-9289-B6B2-CA3FA2F45D0C}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Platform\OpenGL">
+      <UniqueIdentifier>{35A49437-A105-7245-2A73-B8F796D3A804}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Platform\Windows">
+      <UniqueIdentifier>{5B054582-4794-CE4B-F0B2-E246DC20DFF1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="vendor">
+      <UniqueIdentifier>{B3738122-9F15-ACF8-88D0-BF4C74113349}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="vendor\stb_image">
+      <UniqueIdentifier>{0DA0BA59-F998-D9AB-22CB-BE300E23B9B7}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="src\Nitro.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Nitro\Application.h">
+      <Filter>src\Nitro</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Nitro\Core\Core.h">
+      <Filter>src\Nitro\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Nitro\Core\Timestep.h">
+      <Filter>src\Nitro\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Nitro\EntryPoint.h">
+      <Filter>src\Nitro</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Nitro\Events\AppEvent.h">
+      <Filter>src\Nitro\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Nitro\Events\Event.h">
+      <Filter>src\Nitro\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Nitro\Events\KeyEvent.h">
+      <Filter>src\Nitro\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Nitro\Events\MouseEvent.h">
+      <Filter>src\Nitro\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Nitro\ImGui\ImGuiLayer.h">
+      <Filter>src\Nitro\ImGui</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Nitro\Input\Input.h">
+      <Filter>src\Nitro\Input</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Nitro\Input\KeyCodes.h">
+      <Filter>src\Nitro\Input</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Nitro\Input\MouseButtonCodes.h">
+      <Filter>src\Nitro\Input</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Nitro\Layer.h">
+      <Filter>src\Nitro</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Nitro\LayerStack.h">
+      <Filter>src\Nitro</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Nitro\Log.h">
+      <Filter>src\Nitro</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Nitro\Renderer\Buffer.h">
+      <Filter>src\Nitro\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Nitro\Renderer\GraphicsContext.h">
+      <Filter>src\Nitro\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Nitro\Renderer\OrthographicCamera.h">
+      <Filter>src\Nitro\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Nitro\Renderer\RenderAPI.h">
+      <Filter>src\Nitro\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Nitro\Renderer\Renderer.h">
+      <Filter>src\Nitro\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Nitro\Renderer\RendererCommand.h">
+      <Filter>src\Nitro\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Nitro\Renderer\Shader.h">
+      <Filter>src\Nitro\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Nitro\Renderer\Texture.h">
+      <Filter>src\Nitro\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Nitro\Renderer\VertexArray.h">
+      <Filter>src\Nitro\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Nitro\Window.h">
+      <Filter>src\Nitro</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Platform\OpenGL\OpenGLBuffer.h">
+      <Filter>src\Platform\OpenGL</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Platform\OpenGL\OpenGLContext.h">
+      <Filter>src\Platform\OpenGL</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Platform\OpenGL\OpenGLRendererAPI.h">
+      <Filter>src\Platform\OpenGL</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Platform\OpenGL\OpenGLShader.h">
+      <Filter>src\Platform\OpenGL</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Platform\OpenGL\OpenGLTexture.h">
+      <Filter>src\Platform\OpenGL</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Platform\OpenGL\OpenGLVertexArray.h">
+      <Filter>src\Platform\OpenGL</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Platform\Windows\WindowsInput.h">
+      <Filter>src\Platform\Windows</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Platform\Windows\WindowsWindow.h">
+      <Filter>src\Platform\Windows</Filter>
+    </ClInclude>
+    <ClInclude Include="src\ngpch.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="vendor\stb_image\stb_image.h">
+      <Filter>vendor\stb_image</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="src\Nitro\Application.cpp">
+      <Filter>src\Nitro</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Nitro\ImGui\ImGuiBuild.cpp">
+      <Filter>src\Nitro\ImGui</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Nitro\ImGui\ImGuiLayer.cpp">
+      <Filter>src\Nitro\ImGui</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Nitro\Layer.cpp">
+      <Filter>src\Nitro</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Nitro\LayerStack.cpp">
+      <Filter>src\Nitro</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Nitro\Log.cpp">
+      <Filter>src\Nitro</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Nitro\Renderer\Buffer.cpp">
+      <Filter>src\Nitro\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Nitro\Renderer\OrthographicCamera.cpp">
+      <Filter>src\Nitro\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Nitro\Renderer\RenderAPI.cpp">
+      <Filter>src\Nitro\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Nitro\Renderer\Renderer.cpp">
+      <Filter>src\Nitro\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Nitro\Renderer\RendererCommand.cpp">
+      <Filter>src\Nitro\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Nitro\Renderer\Shader.cpp">
+      <Filter>src\Nitro\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Nitro\Renderer\Texture.cpp">
+      <Filter>src\Nitro\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Nitro\Renderer\VertexArray.cpp">
+      <Filter>src\Nitro\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Platform\OpenGL\OpenGLBuffer.cpp">
+      <Filter>src\Platform\OpenGL</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Platform\OpenGL\OpenGLContext.cpp">
+      <Filter>src\Platform\OpenGL</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Platform\OpenGL\OpenGLRendererAPI.cpp">
+      <Filter>src\Platform\OpenGL</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Platform\OpenGL\OpenGLShader.cpp">
+      <Filter>src\Platform\OpenGL</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Platform\OpenGL\OpenGLTexture.cpp">
+      <Filter>src\Platform\OpenGL</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Platform\OpenGL\OpenGLVertexArray.cpp">
+      <Filter>src\Platform\OpenGL</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Platform\Windows\WindowsInput.cpp">
+      <Filter>src\Platform\Windows</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Platform\Windows\WindowsWindow.cpp">
+      <Filter>src\Platform\Windows</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ngpch.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="vendor\stb_image\stb_image.cpp">
+      <Filter>vendor\stb_image</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>

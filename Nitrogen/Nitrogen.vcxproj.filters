@@ -4,8 +4,32 @@
     <Filter Include="src">
       <UniqueIdentifier>{2DAB880B-99B4-887C-2230-9F7C8E38947C}</UniqueIdentifier>
     </Filter>
-    <Filter Include="src\Core">
-      <UniqueIdentifier>{A5D31CCF-91A0-77DA-BAB9-6582A6E5AC68}</UniqueIdentifier>
+    <Filter Include="src\Nitrogen">
+      <UniqueIdentifier>{C208C351-AE6B-52F6-57F1-8AAC43331E79}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Nitrogen\Core">
+      <UniqueIdentifier>{5AF6E954-C60C-E8EA-0F84-730C7BD9B872}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Nitrogen\Events">
+      <UniqueIdentifier>{6606633C-D267-404A-5BD5-86FCC7357709}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Nitrogen\ImGui">
+      <UniqueIdentifier>{6C8793F2-586B-5448-C1CB-4E9BADCE3ECA}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Nitrogen\Input">
+      <UniqueIdentifier>{41C294F2-2DA6-5548-9606-509B820940CA}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Nitrogen\Renderer">
+      <UniqueIdentifier>{A84639D8-14B3-F4D2-DDA6-8C3049D2163B}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Platform">
+      <UniqueIdentifier>{21CA02E5-0D2D-9289-B6B2-CA3FA2F45D0C}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Platform\OpenGL">
+      <UniqueIdentifier>{35A49437-A105-7245-2A73-B8F796D3A804}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Platform\Windows">
+      <UniqueIdentifier>{5B054582-4794-CE4B-F0B2-E246DC20DFF1}</UniqueIdentifier>
     </Filter>
     <Filter Include="vendor">
       <UniqueIdentifier>{B3738122-9F15-ACF8-88D0-BF4C74113349}</UniqueIdentifier>
@@ -15,20 +39,107 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\Core\Core.h">
-      <Filter>src\Core</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Core\CoreApp.h">
-      <Filter>src\Core</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Core\EntryPoint.h">
-      <Filter>src\Core</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Core\Log.h">
-      <Filter>src\Core</Filter>
-    </ClInclude>
     <ClInclude Include="src\Nitrogen.h">
       <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Nitrogen\Core\CoreApp.h">
+      <Filter>src\Nitrogen</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Nitrogen\Core\Core.h">
+      <Filter>src\Nitrogen\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Nitrogen\Core\Timestep.h">
+      <Filter>src\Nitrogen\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Nitrogen\Core\EntryPoint.h">
+      <Filter>src\Nitrogen</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Nitrogen\Core\Events\AppEvent.h">
+      <Filter>src\Nitrogen\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Nitrogen\Core\Events\Event.h">
+      <Filter>src\Nitrogen\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Nitrogen\Core\Events\KeyEvent.h">
+      <Filter>src\Nitrogen\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Nitrogen\Core\Events\MouseEvent.h">
+      <Filter>src\Nitrogen\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Nitrogen\ImGui\ImGuiLayer.h">
+      <Filter>src\Nitrogen\ImGui</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Nitrogen\Core\Input\Input.h">
+      <Filter>src\Nitrogen\Input</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Nitrogen\Core\Input\KeyCodes.h">
+      <Filter>src\Nitrogen\Input</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Nitrogen\Core\Input\MouseButtonCodes.h">
+      <Filter>src\Nitrogen\Input</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Nitrogen\Core\Layer.h">
+      <Filter>src\Nitrogen</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Nitrogen\Core\LayerStack.h">
+      <Filter>src\Nitrogen</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Nitrogen\Core\Log.h">
+      <Filter>src\Nitrogen</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Nitrogen\Renderer\Buffer.h">
+      <Filter>src\Nitrogen\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Nitrogen\Renderer\GraphicsContext.h">
+      <Filter>src\Nitrogen\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Nitrogen\Renderer\OrthographicCamera.h">
+      <Filter>src\Nitrogen\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Nitrogen\Renderer\RenderAPI.h">
+      <Filter>src\Nitrogen\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Nitrogen\Renderer\Renderer.h">
+      <Filter>src\Nitrogen\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Nitrogen\Renderer\RendererCommand.h">
+      <Filter>src\Nitrogen\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Nitrogen\Renderer\Shader.h">
+      <Filter>src\Nitrogen\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Nitrogen\Renderer\Texture.h">
+      <Filter>src\Nitrogen\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Nitrogen\Renderer\VertexArray.h">
+      <Filter>src\Nitrogen\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Nitrogen\Core\Window.h">
+      <Filter>src\Nitrogen</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Platform\OpenGL\OpenGLBuffer.h">
+      <Filter>src\Platform\OpenGL</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Platform\OpenGL\OpenGLContext.h">
+      <Filter>src\Platform\OpenGL</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Platform\OpenGL\OpenGLRendererAPI.h">
+      <Filter>src\Platform\OpenGL</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Platform\OpenGL\OpenGLShader.h">
+      <Filter>src\Platform\OpenGL</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Platform\OpenGL\OpenGLTexture.h">
+      <Filter>src\Platform\OpenGL</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Platform\OpenGL\OpenGLVertexArray.h">
+      <Filter>src\Platform\OpenGL</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Platform\Windows\WindowsInput.h">
+      <Filter>src\Platform\Windows</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Platform\Windows\WindowsWindow.h">
+      <Filter>src\Platform\Windows</Filter>
     </ClInclude>
     <ClInclude Include="src\ntgpch.h">
       <Filter>src</Filter>
@@ -36,26 +147,73 @@
     <ClInclude Include="vendor\stb_image\stb_image.h">
       <Filter>vendor\stb_image</Filter>
     </ClInclude>
-    <ClInclude Include="src\Events\Event.h" />
-    <ClInclude Include="src\Events\AppEvent.h" />
-    <ClInclude Include="src\Events\KeyEvent.h" />
-    <ClInclude Include="src\Events\MouseEvent.h" />
-    <ClInclude Include="src\Core\KeyCodes.h" />
-    <ClInclude Include="src\Core\MouseCodes.h" />
-    <ClInclude Include="src\Core\Window.h" />
-    <ClInclude Include="src\Platform\Windows\WindowsWindow.h" />
-    <ClInclude Include="src\Core\Layer.h" />
-    <ClInclude Include="src\Core\LayerStack.h" />
-    <ClInclude Include="src\Core\Input\Input.h" />
-    <ClInclude Include="src\Renderer\GraphicsContext.h" />
-    <ClInclude Include="src\Platform\OpenGL\glGraphicsContext.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\Core\CoreApp.cpp">
-      <Filter>src\Core</Filter>
+    <ClCompile Include="src\Nitrogen\Core\CoreApp.cpp">
+      <Filter>src\Nitrogen</Filter>
     </ClCompile>
-    <ClCompile Include="src\Core\Log.cpp">
-      <Filter>src\Core</Filter>
+    <ClCompile Include="src\Nitrogen\ImGui\ImGuiBuild.cpp">
+      <Filter>src\Nitrogen\ImGui</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Nitrogen\ImGui\ImGuiLayer.cpp">
+      <Filter>src\Nitrogen\ImGui</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Nitrogen\Core\Layer.cpp">
+      <Filter>src\Nitrogen</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Nitrogen\Core\LayerStack.cpp">
+      <Filter>src\Nitrogen</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Nitrogen\Core\Log.cpp">
+      <Filter>src\Nitrogen</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Nitrogen\Renderer\Buffer.cpp">
+      <Filter>src\Nitrogen\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Nitrogen\Renderer\OrthographicCamera.cpp">
+      <Filter>src\Nitrogen\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Nitrogen\Renderer\RenderAPI.cpp">
+      <Filter>src\Nitrogen\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Nitrogen\Renderer\Renderer.cpp">
+      <Filter>src\Nitrogen\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Nitrogen\Renderer\RendererCommand.cpp">
+      <Filter>src\Nitrogen\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Nitrogen\Renderer\Shader.cpp">
+      <Filter>src\Nitrogen\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Nitrogen\Renderer\Texture.cpp">
+      <Filter>src\Nitrogen\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Nitrogen\Renderer\VertexArray.cpp">
+      <Filter>src\Nitrogen\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Platform\OpenGL\OpenGLBuffer.cpp">
+      <Filter>src\Platform\OpenGL</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Platform\OpenGL\OpenGLContext.cpp">
+      <Filter>src\Platform\OpenGL</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Platform\OpenGL\OpenGLRendererAPI.cpp">
+      <Filter>src\Platform\OpenGL</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Platform\OpenGL\OpenGLShader.cpp">
+      <Filter>src\Platform\OpenGL</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Platform\OpenGL\OpenGLTexture.cpp">
+      <Filter>src\Platform\OpenGL</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Platform\OpenGL\OpenGLVertexArray.cpp">
+      <Filter>src\Platform\OpenGL</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Platform\Windows\WindowsInput.cpp">
+      <Filter>src\Platform\Windows</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Platform\Windows\WindowsWindow.cpp">
+      <Filter>src\Platform\Windows</Filter>
     </ClCompile>
     <ClCompile Include="src\ntgpch.cpp">
       <Filter>src</Filter>
@@ -63,12 +221,5 @@
     <ClCompile Include="vendor\stb_image\stb_image.cpp">
       <Filter>vendor\stb_image</Filter>
     </ClCompile>
-    <ClCompile Include="src\Core\Window.cpp" />
-    <ClCompile Include="src\Platform\Windows\WindowsWindow.cpp" />
-    <ClCompile Include="src\Core\Layer.cpp" />
-    <ClCompile Include="src\Core\LayerStack.cpp" />
-    <ClCompile Include="src\Platform\Windows\WindowsInput.h" />
-    <ClCompile Include="src\Platform\Windows\WindowsInput.cpp" />
-    <ClCompile Include="src\Platform\OpenGL\glGraphicsContext.cpp" />
   </ItemGroup>
 </Project>
