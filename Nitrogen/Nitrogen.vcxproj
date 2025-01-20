@@ -147,21 +147,22 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="src\Nitrogen.h" />
-    <ClInclude Include="src\Nitrogen\Core\CoreApp.h" />
     <ClInclude Include="src\Nitrogen\Core\Core.h" />
-    <ClInclude Include="src\Nitrogen\Core\Timestep.h" />
+    <ClInclude Include="src\Nitrogen\Core\CoreApp.h" />
     <ClInclude Include="src\Nitrogen\Core\EntryPoint.h" />
     <ClInclude Include="src\Nitrogen\Core\Events\AppEvent.h" />
     <ClInclude Include="src\Nitrogen\Core\Events\Event.h" />
     <ClInclude Include="src\Nitrogen\Core\Events\KeyEvent.h" />
     <ClInclude Include="src\Nitrogen\Core\Events\MouseEvent.h" />
-    <ClInclude Include="src\Nitrogen\ImGui\ImGuiLayer.h" />
     <ClInclude Include="src\Nitrogen\Core\Input\Input.h" />
     <ClInclude Include="src\Nitrogen\Core\Input\KeyCodes.h" />
     <ClInclude Include="src\Nitrogen\Core\Input\MouseButtonCodes.h" />
     <ClInclude Include="src\Nitrogen\Core\Layer.h" />
     <ClInclude Include="src\Nitrogen\Core\LayerStack.h" />
     <ClInclude Include="src\Nitrogen\Core\Log.h" />
+    <ClInclude Include="src\Nitrogen\Core\Timestep.h" />
+    <ClInclude Include="src\Nitrogen\Core\Window.h" />
+    <ClInclude Include="src\Nitrogen\ImGui\ImGuiLayer.h" />
     <ClInclude Include="src\Nitrogen\Renderer\Buffer.h" />
     <ClInclude Include="src\Nitrogen\Renderer\GraphicsContext.h" />
     <ClInclude Include="src\Nitrogen\Renderer\OrthographicCamera.h" />
@@ -171,7 +172,6 @@
     <ClInclude Include="src\Nitrogen\Renderer\Shader.h" />
     <ClInclude Include="src\Nitrogen\Renderer\Texture.h" />
     <ClInclude Include="src\Nitrogen\Renderer\VertexArray.h" />
-    <ClInclude Include="src\Nitrogen\Core\Window.h" />
     <ClInclude Include="src\Platform\OpenGL\OpenGLBuffer.h" />
     <ClInclude Include="src\Platform\OpenGL\OpenGLContext.h" />
     <ClInclude Include="src\Platform\OpenGL\OpenGLRendererAPI.h" />
@@ -185,11 +185,11 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Nitrogen\Core\CoreApp.cpp" />
-    <ClCompile Include="src\Nitrogen\ImGui\ImGuiBuild.cpp" />
-    <ClCompile Include="src\Nitrogen\ImGui\ImGuiLayer.cpp" />
     <ClCompile Include="src\Nitrogen\Core\Layer.cpp" />
     <ClCompile Include="src\Nitrogen\Core\LayerStack.cpp" />
     <ClCompile Include="src\Nitrogen\Core\Log.cpp" />
+    <ClCompile Include="src\Nitrogen\ImGui\ImGuiBuild.cpp" />
+    <ClCompile Include="src\Nitrogen\ImGui\ImGuiLayer.cpp" />
     <ClCompile Include="src\Nitrogen\Renderer\Buffer.cpp" />
     <ClCompile Include="src\Nitrogen\Renderer\OrthographicCamera.cpp" />
     <ClCompile Include="src\Nitrogen\Renderer\RenderAPI.cpp" />

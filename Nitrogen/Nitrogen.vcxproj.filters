@@ -10,14 +10,14 @@
     <Filter Include="src\Nitrogen\Core">
       <UniqueIdentifier>{5AF6E954-C60C-E8EA-0F84-730C7BD9B872}</UniqueIdentifier>
     </Filter>
-    <Filter Include="src\Nitrogen\Events">
-      <UniqueIdentifier>{6606633C-D267-404A-5BD5-86FCC7357709}</UniqueIdentifier>
+    <Filter Include="src\Nitrogen\Core\Events">
+      <UniqueIdentifier>{FEB8F3B1-EADD-4232-1329-28C2FFAC4150}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Nitrogen\Core\Input">
+      <UniqueIdentifier>{D9810D99-45B9-5530-4EC3-B953BA797C29}</UniqueIdentifier>
     </Filter>
     <Filter Include="src\Nitrogen\ImGui">
       <UniqueIdentifier>{6C8793F2-586B-5448-C1CB-4E9BADCE3ECA}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="src\Nitrogen\Input">
-      <UniqueIdentifier>{41C294F2-2DA6-5548-9606-509B820940CA}</UniqueIdentifier>
     </Filter>
     <Filter Include="src\Nitrogen\Renderer">
       <UniqueIdentifier>{A84639D8-14B3-F4D2-DDA6-8C3049D2163B}</UniqueIdentifier>
@@ -42,50 +42,53 @@
     <ClInclude Include="src\Nitrogen.h">
       <Filter>src</Filter>
     </ClInclude>
-    <ClInclude Include="src\Nitrogen\Core\CoreApp.h">
-      <Filter>src\Nitrogen</Filter>
-    </ClInclude>
     <ClInclude Include="src\Nitrogen\Core\Core.h">
+      <Filter>src\Nitrogen\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Nitrogen\Core\CoreApp.h">
+      <Filter>src\Nitrogen\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Nitrogen\Core\EntryPoint.h">
+      <Filter>src\Nitrogen\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Nitrogen\Core\Events\AppEvent.h">
+      <Filter>src\Nitrogen\Core\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Nitrogen\Core\Events\Event.h">
+      <Filter>src\Nitrogen\Core\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Nitrogen\Core\Events\KeyEvent.h">
+      <Filter>src\Nitrogen\Core\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Nitrogen\Core\Events\MouseEvent.h">
+      <Filter>src\Nitrogen\Core\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Nitrogen\Core\Input\Input.h">
+      <Filter>src\Nitrogen\Core\Input</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Nitrogen\Core\Input\KeyCodes.h">
+      <Filter>src\Nitrogen\Core\Input</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Nitrogen\Core\Input\MouseButtonCodes.h">
+      <Filter>src\Nitrogen\Core\Input</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Nitrogen\Core\Layer.h">
+      <Filter>src\Nitrogen\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Nitrogen\Core\LayerStack.h">
+      <Filter>src\Nitrogen\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Nitrogen\Core\Log.h">
       <Filter>src\Nitrogen\Core</Filter>
     </ClInclude>
     <ClInclude Include="src\Nitrogen\Core\Timestep.h">
       <Filter>src\Nitrogen\Core</Filter>
     </ClInclude>
-    <ClInclude Include="src\Nitrogen\Core\EntryPoint.h">
-      <Filter>src\Nitrogen</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Nitrogen\Core\Events\AppEvent.h">
-      <Filter>src\Nitrogen\Events</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Nitrogen\Core\Events\Event.h">
-      <Filter>src\Nitrogen\Events</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Nitrogen\Core\Events\KeyEvent.h">
-      <Filter>src\Nitrogen\Events</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Nitrogen\Core\Events\MouseEvent.h">
-      <Filter>src\Nitrogen\Events</Filter>
+    <ClInclude Include="src\Nitrogen\Core\Window.h">
+      <Filter>src\Nitrogen\Core</Filter>
     </ClInclude>
     <ClInclude Include="src\Nitrogen\ImGui\ImGuiLayer.h">
       <Filter>src\Nitrogen\ImGui</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Nitrogen\Core\Input\Input.h">
-      <Filter>src\Nitrogen\Input</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Nitrogen\Core\Input\KeyCodes.h">
-      <Filter>src\Nitrogen\Input</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Nitrogen\Core\Input\MouseButtonCodes.h">
-      <Filter>src\Nitrogen\Input</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Nitrogen\Core\Layer.h">
-      <Filter>src\Nitrogen</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Nitrogen\Core\LayerStack.h">
-      <Filter>src\Nitrogen</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Nitrogen\Core\Log.h">
-      <Filter>src\Nitrogen</Filter>
     </ClInclude>
     <ClInclude Include="src\Nitrogen\Renderer\Buffer.h">
       <Filter>src\Nitrogen\Renderer</Filter>
@@ -113,9 +116,6 @@
     </ClInclude>
     <ClInclude Include="src\Nitrogen\Renderer\VertexArray.h">
       <Filter>src\Nitrogen\Renderer</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Nitrogen\Core\Window.h">
-      <Filter>src\Nitrogen</Filter>
     </ClInclude>
     <ClInclude Include="src\Platform\OpenGL\OpenGLBuffer.h">
       <Filter>src\Platform\OpenGL</Filter>
@@ -150,22 +150,22 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Nitrogen\Core\CoreApp.cpp">
-      <Filter>src\Nitrogen</Filter>
+      <Filter>src\Nitrogen\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Nitrogen\Core\Layer.cpp">
+      <Filter>src\Nitrogen\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Nitrogen\Core\LayerStack.cpp">
+      <Filter>src\Nitrogen\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Nitrogen\Core\Log.cpp">
+      <Filter>src\Nitrogen\Core</Filter>
     </ClCompile>
     <ClCompile Include="src\Nitrogen\ImGui\ImGuiBuild.cpp">
       <Filter>src\Nitrogen\ImGui</Filter>
     </ClCompile>
     <ClCompile Include="src\Nitrogen\ImGui\ImGuiLayer.cpp">
       <Filter>src\Nitrogen\ImGui</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Nitrogen\Core\Layer.cpp">
-      <Filter>src\Nitrogen</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Nitrogen\Core\LayerStack.cpp">
-      <Filter>src\Nitrogen</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Nitrogen\Core\Log.cpp">
-      <Filter>src\Nitrogen</Filter>
     </ClCompile>
     <ClCompile Include="src\Nitrogen\Renderer\Buffer.cpp">
       <Filter>src\Nitrogen\Renderer</Filter>
