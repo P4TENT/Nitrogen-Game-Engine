@@ -82,6 +82,7 @@
 // | Orthographic Camera											|
 // |================================================================|
 #include "Nitrogen/Renderer/OrthographicCamera.h"
+#include "Nitrogen/Renderer/OrthographicCameraController.h"
 // |================================================================|
 // | Texutre														|
 // |================================================================|

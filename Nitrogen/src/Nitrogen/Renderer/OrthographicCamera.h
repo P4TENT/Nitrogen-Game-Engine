@@ -20,6 +20,8 @@ namespace Nitrogen{
 			RecalculateViewMatrix();
 		}
 
+		void SetProjection(float left, float right, float bottom, float top);
+
 		inline const glm::vec3& GetPosition()		const { return m_Position; }
 		inline const float GetRotation()			const { return m_Rotation; }
 

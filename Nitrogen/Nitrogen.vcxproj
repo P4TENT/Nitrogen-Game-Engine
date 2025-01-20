@@ -166,6 +166,7 @@
     <ClInclude Include="src\Nitrogen\Renderer\Buffer.h" />
     <ClInclude Include="src\Nitrogen\Renderer\GraphicsContext.h" />
     <ClInclude Include="src\Nitrogen\Renderer\OrthographicCamera.h" />
+    <ClInclude Include="src\Nitrogen\Renderer\OrthographicCameraController.h" />
     <ClInclude Include="src\Nitrogen\Renderer\RenderAPI.h" />
     <ClInclude Include="src\Nitrogen\Renderer\Renderer.h" />
     <ClInclude Include="src\Nitrogen\Renderer\RendererCommand.h" />
@@ -192,6 +193,7 @@
     <ClCompile Include="src\Nitrogen\ImGui\ImGuiLayer.cpp" />
     <ClCompile Include="src\Nitrogen\Renderer\Buffer.cpp" />
     <ClCompile Include="src\Nitrogen\Renderer\OrthographicCamera.cpp" />
+    <ClCompile Include="src\Nitrogen\Renderer\OrthographicCameraController.cpp" />
     <ClCompile Include="src\Nitrogen\Renderer\RenderAPI.cpp" />
     <ClCompile Include="src\Nitrogen\Renderer\Renderer.cpp" />
     <ClCompile Include="src\Nitrogen\Renderer\RendererCommand.cpp" />
