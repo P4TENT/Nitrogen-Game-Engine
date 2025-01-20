@@ -47,7 +47,6 @@ namespace Nitrogen{
 
 		LayerStack m_LayerStack;
 		float m_LastFrameTime = 0.f;
-		//Timestep m_Timestep;
 
 	private:
 		static Application* s_Instance;

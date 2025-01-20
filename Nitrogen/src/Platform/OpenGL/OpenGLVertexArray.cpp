@@ -25,6 +25,7 @@ namespace Nitrogen{
 		}
 
 		NTG_CORE_ASSERT(false, "Nitro::ShaderDataTypeToOpenGLBaseType(): Unknown ShaderDataType!");
+		return 0;
 	}
 
 

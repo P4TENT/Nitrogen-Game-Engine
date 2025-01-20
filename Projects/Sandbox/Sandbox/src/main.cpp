@@ -13,11 +13,12 @@ public:
 	ExampleLayer()
 		: Layer("Example"), m_CameraController(1280.f / 720.f)
 	{
+		m_Texture2d = Nitrogen::Texture2D::Create("src/assets/textures/2.png");
 	}
 
 	void OnUpdate(Nitrogen::Timestep deltaT) override
 	{
-		m_CameraController.OnUpdate(deltaT);
+		m_CameraController.OnUpdate(deltaT); 
 
 		Nitrogen::RendererCommand::SetClearColor({ 0.1f, 0.1f, 0.1f, 1 });
 		Nitrogen::RendererCommand::Clear();
@@ -26,6 +27,7 @@ public:
 
 		Nitrogen::Renderer2D::DrawQuad({ -1.f, 0.f }, { 0.8f, 0.8f }, { 0.8f, 0.2f, 0.2f , 1.f });
 		Nitrogen::Renderer2D::DrawQuad({ 0.5f, -0.5f }, { 0.5f, 0.75f }, { 0.2f, 0.2f, 0.8f , 1.f });
+		Nitrogen::Renderer2D::DrawQuad({ 0.f, 0.f }, { 1.0f, 1.0f }, m_Texture2d);
 
 		Nitrogen::Renderer2D::EndScene();
 	}
