@@ -148,6 +148,7 @@
       <Filter>vendor\stb_image</Filter>
     </ClInclude>
     <ClInclude Include="src\Nitrogen\Renderer\OrthographicCameraController.h" />
+    <ClInclude Include="src\Nitrogen\Renderer\Renderer2D.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Nitrogen\Core\CoreApp.cpp">
@@ -223,5 +224,6 @@
       <Filter>vendor\stb_image</Filter>
     </ClCompile>
     <ClCompile Include="src\Nitrogen\Renderer\OrthographicCameraController.cpp" />
+    <ClCompile Include="src\Nitrogen\Renderer\Renderer2D.cpp" />
   </ItemGroup>
 </Project>

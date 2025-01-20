@@ -63,15 +63,18 @@
 // |	- Renderer/GraphicsContext.h                                |
 // |	- Renderer/Renderer.h		                                |
 // |	- Renderer/RendererCommand.h		                        |
+// |	- Renderer/Renderer2D.h										|
 // |	- Renderer/Shader.h									        |
 // |	- Renderer/Buffer.h									        |
 // |	- Renderer/VertexArray.h									|
 // |	- Renderer/OrthographicCamera.h								|
+// |	- Renderer/OrthographicCameraController.h					|
 // |	- Renderer/Texture.h										|
 // |================================================================|
 #include "Nitrogen/Renderer/GraphicsContext.h"
 #include "Nitrogen/Renderer/Renderer.h"
 #include "Nitrogen/Renderer/RendererCommand.h"
+#include "Nitrogen/Renderer/Renderer2D.h"
 // |================================================================|
 // | Shaders & Buffers												|
 // |================================================================|
