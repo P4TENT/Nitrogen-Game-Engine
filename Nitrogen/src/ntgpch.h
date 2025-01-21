@@ -15,6 +15,7 @@
 #include <utility>
 
 #include "Nitrogen/Core/Log.h"
+#include "Nitrogen/Debug/Instrumentor.h"
 
 #ifdef NTG_PLATFORM_WINDOWS
 	#include <Windows.h>

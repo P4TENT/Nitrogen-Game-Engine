@@ -20,6 +20,7 @@ namespace Nitrogen{
 	OpenGLShader::OpenGLShader(const std::string& name, const std::string& vertexSource, const std::string& fragmentSource)
 		: m_Name(name)
 	{
+		NTG_PROFILE_FUNCTION();
 
 		std::unordered_map<GLenum, std::string> sources;
 		sources[GL_VERTEX_SHADER] = vertexSource;
@@ -29,6 +30,8 @@ namespace Nitrogen{
 
 	OpenGLShader::OpenGLShader(const std::string& file_path)
 	{
+		NTG_PROFILE_FUNCTION();
+
 		std::string source = ReadFile(file_path);
 		auto shaderSources = PreProcess(source);
 		CompileShader(shaderSources);
@@ -43,6 +46,8 @@ namespace Nitrogen{
 
 	std::string OpenGLShader::ReadFile(const std::string& file_path)
 	{
+		NTG_PROFILE_FUNCTION();
+
 		std::string result;
 		std::ifstream stream(file_path, std::ios::in | std::ios::binary);
 
@@ -64,6 +69,8 @@ namespace Nitrogen{
 
 	std::unordered_map<GLenum, std::string> OpenGLShader::PreProcess(std::string& shaderSrc)
 	{
+		NTG_PROFILE_FUNCTION();
+
 		std::unordered_map<GLenum, std::string> shaderSources;
 
 		const char* typeToken = "#type";
@@ -89,6 +96,8 @@ namespace Nitrogen{
 	
 	void OpenGLShader::CompileShader(const std::unordered_map<GLenum, std::string>& shaderSrcs)
 	{
+		NTG_PROFILE_FUNCTION();
+
 		GLuint program = glCreateProgram();
 		NTG_CORE_ASSERT(shaderSrcs.size() <= 2, "We only support 2 shaders for now");
 		std::array<GLenum, 2> glShaderIDs;
@@ -160,41 +169,57 @@ namespace Nitrogen{
 
 	OpenGLShader::~OpenGLShader()
 	{
+		NTG_PROFILE_FUNCTION();
+
 		glDeleteProgram(m_RendererID);
 	}
 	
 	void OpenGLShader::Bind()
 	{
+		NTG_PROFILE_FUNCTION();
+
 		glUseProgram(m_RendererID);
 	}
 	
 	void OpenGLShader::Unbind()
 	{
+		NTG_PROFILE_FUNCTION();
+
 		glUseProgram(0);
 	}
 
 	void OpenGLShader::SetInt(const std::string& name, int value)
 	{
+		NTG_PROFILE_FUNCTION();
+
 		UploadUniformInt(name, value);
 	}
 
 	void OpenGLShader::SetMat4(const std::string& name, const glm::mat4& value)
 	{
+		NTG_PROFILE_FUNCTION();
+
 		UploadUniformMat4(name, value);
 	}
 
 	void OpenGLShader::SetMat3(const std::string& name, const glm::mat3& value)
 	{
+		NTG_PROFILE_FUNCTION();
+
 		UploadUniformMat3(name, value);
 	}
 
 	void OpenGLShader::SetFloat4(const std::string& name, const glm::vec4& value)
 	{
+		NTG_PROFILE_FUNCTION();
+
 		UploadUniformFloat4(name, value);
 	}
 
 	void OpenGLShader::SetFloat3(const std::string& name, const glm::vec3& value)
 	{
+		NTG_PROFILE_FUNCTION();
+
 		UploadUniformFloat3(name, value);
 	}
 	

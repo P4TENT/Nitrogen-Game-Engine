@@ -15,6 +15,8 @@ namespace Nitrogen{
 	
 	void OpenGLContext::Init()
 	{
+		NTG_PROFILE_FUNCTION();
+
 		glfwMakeContextCurrent(m_WindowHandle);
 		int status = gladLoadGLLoader((GLADloadproc)glfwGetProcAddress);
 		NTG_CORE_ASSERT(status, "Nitro::OpenGLContext::Init(): Failed to initialize Glad!");
@@ -22,6 +24,8 @@ namespace Nitrogen{
 	
 	void OpenGLContext::SwapBuffers()
 	{
+		NTG_PROFILE_FUNCTION();
+
 		glfwSwapBuffers(m_WindowHandle);
 	}
 }

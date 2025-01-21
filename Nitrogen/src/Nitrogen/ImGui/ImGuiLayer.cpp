@@ -25,6 +25,8 @@ namespace Nitrogen{
 
 	void ImGuiLayer::OnAttach()
 	{
+		NTG_PROFILE_FUNCTION();
+
 		// Initialize ImGui
 		IMGUI_CHECKVERSION();
 		ImGui::CreateContext();
@@ -75,6 +77,8 @@ namespace Nitrogen{
 
 	void ImGuiLayer::OnDetach()
 	{
+		NTG_PROFILE_FUNCTION();
+
 		ImGui_ImplOpenGL3_Shutdown();
 		ImGui_ImplGlfw_Shutdown();
 		ImGui::DestroyContext();
@@ -82,6 +86,8 @@ namespace Nitrogen{
 
 	void ImGuiLayer::Begin()
 	{
+		NTG_PROFILE_FUNCTION();
+
 		ImGui_ImplOpenGL3_NewFrame();
 		ImGui_ImplGlfw_NewFrame();
 		ImGui::NewFrame();
@@ -89,6 +95,8 @@ namespace Nitrogen{
 
 	void ImGuiLayer::End()
 	{
+		NTG_PROFILE_FUNCTION();
+
 		ImGuiIO& io = ImGui::GetIO();
 		Application& app = Application::Get();
 		io.DisplaySize = ImVec2((float)app.GetWindow().GetWidth(), (float)app.GetWindow().GetHeight());
@@ -109,6 +117,5 @@ namespace Nitrogen{
 	void ImGuiLayer::OnImGuiRender()
 	{
 		static bool show = true;
-		ImGui::ShowDemoWindow(&show);
 	}
 }

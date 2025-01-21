@@ -15,12 +15,14 @@ namespace Nitrogen{
 
 	Application::Application()
 	{
+		NTG_PROFILE_FUNCTION();
+
 		NTG_CORE_ASSERT(!s_Instance, "Nitro::Application::Application(): Application already exists!");
 		s_Instance = this;
 
 		m_Window = std::unique_ptr<Window>(Window::Create());
 		m_Window->SetEventCallback(BIND_EVENT_FN(OnEvent));
-		m_Window->SetVSync(1);
+		m_Window->SetVSync(0);
 
 		Renderer::Init();
 
@@ -34,18 +36,24 @@ namespace Nitrogen{
 
 	void Application::PushLayer(Layer* layer)
 	{
+		NTG_PROFILE_FUNCTION();
+
 		m_LayerStack.PushLayer(layer);
 		layer->OnAttach();
 	}
 
 	void Application::PushOverlay(Layer* layer)
 	{
+		NTG_PROFILE_FUNCTION();
+
 		m_LayerStack.PushOverlay(layer);
 		layer->OnAttach();
 	}
 
 	void Application::OnEvent(Event& e)
 	{
+		NTG_PROFILE_FUNCTION();
+
 		EventDispatcher dispatcher(e);
 		dispatcher.Dispatch<WindowCloseEvent>(BIND_EVENT_FN(OnWindowClose));
 		dispatcher.Dispatch<WindowResizeEvent>(BIND_EVENT_FN(OnWindowResize));
@@ -60,8 +68,12 @@ namespace Nitrogen{
 
 	void Application::Run()
 	{
+		NTG_PROFILE_FUNCTION();
+
 		while (m_Running)
 		{
+			NTG_PROFILE_SCOPE("RunLoop");
+
 			// Delta Time Calculation
 			float time = (float)glfwGetTime();
 			Timestep timestep = time - m_LastFrameTime;
@@ -69,13 +81,19 @@ namespace Nitrogen{
 
 			if (!m_WindowMinimized)
 			{
-				for (Layer* layer : m_LayerStack)
-					layer->OnUpdate(timestep);
+				{
+					NTG_PROFILE_SCOPE("LayerStack OnUpdate");
+					for (Layer* layer : m_LayerStack)
+						layer->OnUpdate(timestep);
+				}
 			}
 
 			m_ImGuiLayer->Begin();
-			for (Layer* layer : m_LayerStack)
-				layer->OnImGuiRender();
+			{
+				NTG_PROFILE_SCOPE("LayerStack OnImGuiRender");
+				for (Layer* layer : m_LayerStack)
+					layer->OnImGuiRender();
+			}
 			m_ImGuiLayer->End();
 
 			m_Window->OnUpdate();
@@ -90,6 +108,8 @@ namespace Nitrogen{
 
 	bool Application::OnWindowResize(WindowResizeEvent& e)
 	{
+		NTG_PROFILE_FUNCTION();
+
 		if (e.GetWidth() == 0 || e.GetHeight() == 0)
 		{
 			m_WindowMinimized = true;

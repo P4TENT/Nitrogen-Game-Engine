@@ -19,8 +19,6 @@ namespace Nitrogen{
 
 		virtual uint32_t GetCount() const { return m_Count; }
 
-		static IndexBuffer* Create(uint32_t* indices, uint32_t size);
-
 	private:
 		uint32_t m_Count;
 		uint32_t m_RendererID;
@@ -40,8 +38,6 @@ namespace Nitrogen{
 
 		virtual void SetLayout(const BufferLayout& layout) override { m_Layout = layout; };
 		virtual const BufferLayout& GetLayout() const override { return m_Layout; };
-
-		static VertexBuffer* Create(float* vertices, uint32_t size);
 	private:
 		uint32_t m_RendererID;
 		BufferLayout m_Layout;

@@ -10,6 +10,8 @@ namespace Nitrogen {
 	}
 	void OrthographicCameraController::OnUpdate(Timestep ts)
 	{
+		NTG_PROFILE_FUNCTION();
+
 		if (Input::IsKeyPressed(N_KEY_A))
 			m_CameraPosition.x -= m_CameraTranslationSpeed * ts;
 		if (Input::IsKeyPressed(N_KEY_D))
@@ -31,12 +33,16 @@ namespace Nitrogen {
 	}
 	void OrthographicCameraController::OnEvent(Event& e)
 	{
+		NTG_PROFILE_FUNCTION();
+
 		EventDispatcher dispatcher(e);
 		dispatcher.Dispatch<WindowResizeEvent>(NTG_BIND_EVENT_FN(OrthographicCameraController::OnWindowResized));
 		dispatcher.Dispatch<MouseScrolledEvent>(NTG_BIND_EVENT_FN(OrthographicCameraController::OnMouseScrolled));
 	}
 	bool OrthographicCameraController::OnMouseScrolled(MouseScrolledEvent& e)
 	{
+		NTG_PROFILE_FUNCTION();
+
 		m_ZoomLevel -= e.GetYOffset() * 0.25f;
 		m_ZoomLevel = std::max(m_ZoomLevel, 0.25f);
 		m_Camera.SetProjection(-m_AspectRatio * m_ZoomLevel, m_AspectRatio * m_ZoomLevel, -m_ZoomLevel, m_ZoomLevel);
@@ -44,6 +50,8 @@ namespace Nitrogen {
 	}
 	bool OrthographicCameraController::OnWindowResized(WindowResizeEvent& e)
 	{
+		NTG_PROFILE_FUNCTION();
+
 		m_AspectRatio = (float)e.GetWidth() / (float)e.GetHeight();
 		m_Camera.SetProjection(-m_AspectRatio * m_ZoomLevel, m_AspectRatio * m_ZoomLevel, -m_ZoomLevel, m_ZoomLevel);
 		return false;

@@ -10,6 +10,8 @@ namespace Nitrogen{
 
 	void Renderer::Init()
 	{
+		NTG_PROFILE_FUNCTION();
+
 		RendererCommand::Init();
 		Renderer2D::Init();
 	}
@@ -30,6 +32,8 @@ namespace Nitrogen{
 
 	void Renderer::Submit(const Ref<VertexArray>&vertexArray, const Ref<Shader>& shader, const glm::mat4& transform)
 	{
+		NTG_PROFILE_FUNCTION();
+
 		shader->Bind();
 		std::dynamic_pointer_cast<OpenGLShader>(shader)->UploadUniformMat4("u_ViewProjection", m_SceneData->ViewProjectionMatrix);
 		std::dynamic_pointer_cast<OpenGLShader>(shader)->UploadUniformMat4("u_Transform", transform);

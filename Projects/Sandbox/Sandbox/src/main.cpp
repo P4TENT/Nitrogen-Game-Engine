@@ -5,8 +5,6 @@
 
 #include <imgui.h>
 
-#include "Platform/OpenGL/OpenGLShader.h"
-
 class ExampleLayer : public Nitrogen::Layer
 {
 public:
@@ -18,17 +16,17 @@ public:
 
 	void OnUpdate(Nitrogen::Timestep deltaT) override
 	{
-		m_CameraController.OnUpdate(deltaT); 
+		// Update
+		m_CameraController.OnUpdate(deltaT);
+		m_CameraController.OnUpdate(deltaT);
 
 		Nitrogen::RendererCommand::SetClearColor({ 0.1f, 0.1f, 0.1f, 1 });
 		Nitrogen::RendererCommand::Clear();
 
 		Nitrogen::Renderer2D::BeginScene(m_CameraController.GetCamera());
-
-		Nitrogen::Renderer2D::DrawQuad({ -1.f, 0.f }, { 0.8f, 0.8f }, { 0.8f, 0.2f, 0.2f , 1.f });
-		Nitrogen::Renderer2D::DrawQuad({ 0.5f, -0.5f }, { 0.5f, 0.75f }, { 0.2f, 0.2f, 0.8f , 1.f });
-		Nitrogen::Renderer2D::DrawQuad({ 0.f, 0.f }, { 1.0f, 1.0f }, m_Texture2d);
-
+		Nitrogen::Renderer2D::DrawQuad({ -1.0f, 0.0f }, { 0.8f, 0.8f }, { 0.8f, 0.2f, 0.3f, 1.0f });
+		Nitrogen::Renderer2D::DrawQuad({ 0.5f, -0.5f }, { 0.5f, 0.75f }, { 0.2f, 0.3f, 0.8f, 1.0f });
+		Nitrogen::Renderer2D::DrawQuad({ 0.0f, 0.0f, -0.1f }, { 10.0f, 10.0f }, m_Texture2d);
 		Nitrogen::Renderer2D::EndScene();
 	}
 
@@ -43,17 +41,11 @@ public:
 
 
 private:
-	Nitrogen::ShaderLibrary m_ShaderLibrary;
-	Nitrogen::Ref<Nitrogen::VertexArray> m_VertexArray;
-
-	Nitrogen::Ref<Nitrogen::Shader> m_ColorShader;
-	Nitrogen::Ref<Nitrogen::VertexArray> m_SquareVA;
-
-	Nitrogen::Ref<Nitrogen::Texture2D> m_Texture2d, m_TransparentTex;
+	Nitrogen::Ref<Nitrogen::Texture2D> m_Texture2d;
 
 	Nitrogen::OrthographicCameraController m_CameraController;
 
-	glm::vec4 m_SquareColor = { 0.2f, 0.3f, 0.8f, 1.f };
+	glm::vec4 m_SquareColor = { 0.2f, 0.3f, 0.8f, 1.0f };
 };
 
 class Sandbox : public Nitrogen::Application

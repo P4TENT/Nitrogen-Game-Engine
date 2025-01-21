@@ -162,6 +162,7 @@
     <ClInclude Include="src\Nitrogen\Core\Log.h" />
     <ClInclude Include="src\Nitrogen\Core\Timestep.h" />
     <ClInclude Include="src\Nitrogen\Core\Window.h" />
+    <ClInclude Include="src\Nitrogen\Debug\Instrumentor.h" />
     <ClInclude Include="src\Nitrogen\ImGui\ImGuiLayer.h" />
     <ClInclude Include="src\Nitrogen\Renderer\Buffer.h" />
     <ClInclude Include="src\Nitrogen\Renderer\GraphicsContext.h" />

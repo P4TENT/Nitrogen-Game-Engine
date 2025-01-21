@@ -149,6 +149,7 @@
     </ClInclude>
     <ClInclude Include="src\Nitrogen\Renderer\OrthographicCameraController.h" />
     <ClInclude Include="src\Nitrogen\Renderer\Renderer2D.h" />
+    <ClInclude Include="src\Nitrogen\Debug\Instrumentor.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Nitrogen\Core\CoreApp.cpp">
