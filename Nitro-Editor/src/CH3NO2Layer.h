@@ -4,7 +4,71 @@
 
 #include <imgui.h>
 
-#include <cstdlib>
+#include <shlobj.h>
+
+// OpenFolderDialog() IS TEMPORARY - TODO: MAKE A NEW EXPLORER FROM SCRATCH
+static std::string OpenFolderDialog()
+{
+    wchar_t exePath[MAX_PATH];
+
+    // Get the full path of the current executable
+    DWORD length = GetModuleFileName(NULL, exePath, MAX_PATH);
+
+    if (length == 0)
+    {
+        // Handle error if the function fails
+        std::wcerr << L"Failed to get executable path!" << std::endl;
+    }
+
+    std::wstring path = std::wstring(exePath);
+
+    if (path.empty()) NTG_CLIENT_ERROR("The selected Path is Empty!");
+
+    // Extract the folder path from the executable path (get directory)
+    size_t pos = path.find_last_of(L"\\/");
+    if (pos != std::wstring::npos)
+    {
+        path = path.substr(0, pos); // Remove the executable name, keep the directory
+    }
+
+    // Go 3 directories back
+    int backCount = 3;
+    for (int i = 0; i < backCount; i++) {
+        pos = path.find_last_of(L"\\/");
+        if (pos != std::wstring::npos) {
+            path = path.substr(0, pos); // Move 1 directory back
+        }
+        else {
+            // If there's not enough directories, just break out early
+            break;
+        }
+    }
+
+    BROWSEINFOW bi = { 0 };
+    bi.lpszTitle = L"Select a Folder";
+
+    if (!path.empty()) {
+        // Convert the starting path to a PIDLIST_ABSOLUTE
+        PIDLIST_ABSOLUTE pidlRoot;
+        if (SUCCEEDED(SHParseDisplayName(path.c_str(), NULL, &pidlRoot, 0, NULL))) {
+            bi.pidlRoot = pidlRoot;
+        }
+    }
+
+    // Open the folder picker dialog
+    PIDLIST_ABSOLUTE pidl = SHBrowseForFolder(&bi);
+    if (pidl != NULL)
+    {
+        LPWSTR path;
+        if (SHGetPathFromIDList(pidl, path))
+        {
+            std::wstring wstr(path);
+
+            return std::string(wstr.begin(), wstr.end());  // Return the selected folder path
+        }
+    }
+    return "";  // Return empty string if the user cancels
+}
 
 namespace Nitrogen {
 	class CH3NO2Layer : public Nitrogen::Layer
@@ -75,6 +139,18 @@ namespace Nitrogen {
             ///////////////////////////////////////////
             ImGui::Begin("Tools");
 
+            // * OPEN PROJECT POPUP
+            if (ImGui::Button("Open Project"))
+            {
+                // OpenFolderDialog() IS TEMPORARY - TODO: MAKE A NEW EXPLORER FROM SCRATCH
+                std::string folderPath = OpenFolderDialog();
+                if (!folderPath.empty())
+                {
+                    CurrentProjectPath = folderPath;
+                }
+            }
+
+            // * RUN DEBUG / RELEASE
             const char* options[] = { "Release", "Debug" };
             static int selectedOption = 0;
             ImGui::SetNextItemWidth(100);
@@ -97,24 +173,55 @@ namespace Nitrogen {
             ImGui::SameLine();
             if (ImGui::Button("Run"))
             {
-                if (selectedOption == 0) // Release
+                if (CurrentProjectPath != "") // Check if the path is empty
                 {
-                    int result = system("cd /d D:\\Code\\C++\\Nitrogen-Game-Engine\\Projects\\Sandbox\\backend\\scripts && RunRelease.bat");
-                    if (result != 0)
+                    if (selectedOption == 0) // Release
                     {
-                        // Handle the error if the batch file fails to execute
-                        std::cerr << "Running Error";
+                        std::string command = "cd /d " + CurrentProjectPath + "\\backend\\scripts && RunRelease.bat";
+                        int result = system(command.c_str());
+                        if (result != 0)
+                        {
+                            // Handle the error if the batch file fails to execute
+                            std::cerr << "Running Error";
+                        }
+                    }
+                    else if (selectedOption == 1) // Debug
+                    {
+                        std::string command = "cd /d " + CurrentProjectPath + "\\backend\\scripts && RunDebug.bat";
+                        int result = system(command.c_str());
+                        if (result != 0)
+                        {
+                            // Handle the error if the batch file fails to execute
+                            std::cerr << "Running Error";
+                        }
                     }
                 }
-                else if (selectedOption == 1) // Debug
+                else
                 {
-                    int result = system("cd /d D:\\Code\\C++\\Nitrogen-Game-Engine\\Projects\\Sandbox\\backend\\scripts && RunDebug.bat");
-                    if (result != 0)
-                    {
-                        // Handle the error if the batch file fails to execute
-                        std::cerr << "Running Error";
-                    }
+                    ImGui::OpenPopup("Warning!");
                 }
+            }
+
+            // Popup for Warning
+            if (ImGui::BeginPopup("Warning!"))
+            {
+                // Set the window size for the popup
+                ImGui::SetWindowSize(ImVec2(300, 150), ImGuiCond_Always);
+
+                // Display a warning message
+                ImGui::Text("There is no project selected!");
+                ImVec2 windowSize = ImGui::GetWindowSize();
+                ImVec2 buttonSize = ImVec2(ImGui::CalcTextSize("Ok").x, ImGui::CalcTextSize("Ok").y - 20); // Padding
+                ImVec2 centerPos = ImVec2((windowSize.x - buttonSize.x) * 0.5f, (windowSize.y - buttonSize.y) * 0.5f);
+                ImGui::SetCursorPos(centerPos);
+
+                // Buttons to close the popup or perform an action
+                if (ImGui::Button("Ok"))
+                {
+                    // Close the popup when Ok is clicked
+                    ImGui::CloseCurrentPopup();  // Close the popup
+                }
+                ImGui::EndPopup();
             }
             ///////////////////////////////////////////
             // TOOLS WINDOW ///////////////////////////
@@ -133,5 +240,6 @@ namespace Nitrogen {
 
 	private:
 		Nitrogen::OrthographicCameraController m_CameraController;
+        std::string CurrentProjectPath;
 	};
 }
