@@ -21,7 +21,7 @@ namespace Nitrogen{
 	class Application
 	{
 	public:
-		Application();
+		Application(const std::string& windowTitle);
 		virtual ~Application();
 
 		void Run();
@@ -47,6 +47,8 @@ namespace Nitrogen{
 
 		LayerStack m_LayerStack;
 		float m_LastFrameTime = 0.f;
+
+		std::string m_WindowTitle;
 
 	private:
 		static Application* s_Instance;

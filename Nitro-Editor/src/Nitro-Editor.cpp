@@ -7,6 +7,7 @@ namespace Nitrogen {
 	{
 	public:
 		NitroEditor()
+			:	Application("Nitro-Editor")
 		{
 			PushLayer(new CH3NO2Layer());
 		}

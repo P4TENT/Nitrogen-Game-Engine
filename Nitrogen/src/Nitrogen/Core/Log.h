@@ -4,12 +4,15 @@
 #include "spdlog/spdlog.h"
 #include "spdlog/fmt/ostr.h"
 
+#include "spdlog/sinks/basic_file_sink.h" 
+
 namespace Nitrogen{
 	class Log
 	{
 	private:
 		static std::shared_ptr<spdlog::logger> s_CoreLogger;
 		static std::shared_ptr<spdlog::logger> s_ClientLogger;
+
 	public:
 		static void Init();
 

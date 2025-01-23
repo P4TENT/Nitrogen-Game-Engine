@@ -44,8 +44,17 @@ static std::string OpenFolderDialog()
         }
     }
 
+    std::wstring folderName = L"Projects";
+
+    if (!path.empty() && path.back() != L'\\' && path.back() != L'/') {
+        path += L"\\";
+    }
+
+    // Append the folder
+    path += folderName;
+
     BROWSEINFOW bi = { 0 };
-    bi.lpszTitle = L"Select a Folder";
+    bi.lpszTitle = L"Select a Project.";
 
     if (!path.empty()) {
         // Convert the starting path to a PIDLIST_ABSOLUTE
@@ -147,6 +156,9 @@ namespace Nitrogen {
                 if (!folderPath.empty())
                 {
                     CurrentProjectPath = folderPath;
+                    size_t pos = CurrentProjectPath.find_last_of("/\\");
+                    std::string ProjectName = "Nitro-Engine: " + CurrentProjectPath.substr(pos + 1);  // Extract the folder name after the last separator
+                    Application::Get().GetWindow().SetWindowTitle(ProjectName.c_str());
                 }
             }
 
@@ -177,7 +189,7 @@ namespace Nitrogen {
                 {
                     if (selectedOption == 0) // Release
                     {
-                        std::string command = "cd /d " + CurrentProjectPath + "\\backend\\scripts && RunRelease.bat";
+                        std::string command = "cd /d " + CurrentProjectPath + "/backend/scripts && RunRelease.bat";
                         int result = system(command.c_str());
                         if (result != 0)
                         {
@@ -187,7 +199,7 @@ namespace Nitrogen {
                     }
                     else if (selectedOption == 1) // Debug
                     {
-                        std::string command = "cd /d " + CurrentProjectPath + "\\backend\\scripts && RunDebug.bat";
+                        std::string command = "cd /d " + CurrentProjectPath + "/backend/scripts && RunDebug.bat";
                         int result = system(command.c_str());
                         if (result != 0)
                         {
@@ -239,7 +251,7 @@ namespace Nitrogen {
 		}
 
 	private:
-		Nitrogen::OrthographicCameraController m_CameraController;
+	    Nitrogen::OrthographicCameraController m_CameraController;
         std::string CurrentProjectPath;
 	};
 }

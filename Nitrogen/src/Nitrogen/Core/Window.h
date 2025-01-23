@@ -27,6 +27,7 @@ namespace Nitrogen{
 		virtual NTGUINT GetWidth() const = 0;
 		virtual NTGUINT GetHeight() const = 0;
 
+		virtual void SetWindowTitle(const char* title) = 0;
 		virtual void SetEventCallback(const EventCallbackFn& callback) = 0;
 		virtual void SetVSync(bool enabled) = 0;
 		virtual bool IsVSync() const = 0;

@@ -169,6 +169,12 @@ namespace Nitrogen{
 		m_Context->SwapBuffers();
 	}
 
+	void WindowsWindow::SetWindowTitle(const char* title)
+	{
+		NTG_PROFILE_FUNCTION();
+		glfwSetWindowTitle(m_Window, title);
+	}
+
 	void WindowsWindow::SetVSync(bool enabled)
 	{
 		NTG_PROFILE_FUNCTION();

@@ -32,6 +32,7 @@ public:
 
 	void OnImGuiRender() override
 	{
+		NTG_CLIENT_INFO("OnImGuiRender");
 	}
 
 	void OnEvent(Nitrogen::Event& e) override
@@ -51,6 +52,7 @@ class Sandbox : public Nitrogen::Application
 {
 public:
 	Sandbox()
+		: Application("Sandbox")
 	{
 		PushLayer(new ExampleLayer());
 	}
