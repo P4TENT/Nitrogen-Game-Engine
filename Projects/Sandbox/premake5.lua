@@ -32,11 +32,6 @@ project "Sandbox"
         "%{IncludeDir.glm}" 											
     } 																	
  																		
-	libdirs 															
-	{ 																	
-	"$(SolutionDir)/backend/lib" 										
-	} 																	
- 																		
     links 																
     { 																	
 		"Nitrogen", 													
@@ -55,17 +50,20 @@ project "Sandbox"
             "NTG_PLATFORM_WINDOWS" 									
         } 																
  																		
-    filter "configurations:Debug" 										
-        defines "NTG_DEBUG" 											
-        runtime "Debug" 												
-        symbols "on" 													
+filter "configurations:Debug" 										
+	defines "NTG_DEBUG" 											
+		runtime "Debug" 												
+	symbols "on" 													
+	libdirs {"$(SolutionDir)/backend/lib/debug"} 					
  																		
-    filter "configurations:Release" 									
-        defines "NTG_RELEASE" 											
-        runtime "Release" 												
-        optimize "on" 													
+   filter "configurations:Release" 									
+       defines "NTG_RELEASE" 											
+       runtime "Release" 												
+       optimize "on" 													
+	libdirs {"$(SolutionDir)/backend/lib/release"} 					
  																		
-    filter "configurations:Dist" 										
-        defines "NTG_DIST" 											
-        runtime "Release" 												
-        optimize "on" 													
+   filter "configurations:Dist" 										
+       defines "NTG_DIST" 												
+       runtime "Release" 												
+       optimize "on" 													
+	libdirs {"$(SolutionDir)/backend/lib/release"} 					

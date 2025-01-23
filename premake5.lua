@@ -85,8 +85,59 @@ project "Nitrogen"
 		runtime "Release"
 		optimize "on"
 
-project "Projects"
-	location "Projects"
+-- project "Projects"
+-- 	location "Projects"
+-- 	kind "ConsoleApp"
+-- 	language "C++"
+-- 	cppdialect "C++17"
+-- 	staticruntime "on"
+
+-- 	targetdir ("bin/" .. outputdir .. "/%{prj.name}")
+-- 	objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
+	
+-- 	files
+-- 	{
+-- 		"%{prj.name}/src/**.h",
+-- 		"%{prj.name}/src/**.cpp"
+-- 	}
+
+-- 	includedirs
+-- 	{
+-- 		"Nitrogen/vendor/spdlog/include",
+-- 		"Nitrogen/vendor/imgui",
+-- 		"Nitrogen/src",
+-- 		"%{IncludeDir.glm}"
+-- 	}
+
+-- 	links
+-- 	{
+-- 		"Nitrogen"
+-- 	}
+
+-- 	filter "system:windows"
+-- 		staticruntime "On"  
+-- 		systemversion "latest"
+
+-- 		defines
+-- 		{
+-- 			"NTG_PLATFORM_WINDOWS"
+-- 		}
+
+-- 	filter "configurations:Debug"
+-- 		defines "NTG_DEBUG"
+-- 		runtime "Debug"
+-- 		symbols "on"
+-- 	filter "configurations:Release"
+-- 		defines "NTG_RELEASE"
+-- 		runtime "Release"
+-- 		optimize "on"
+-- 	filter "configurations:Dist"
+-- 		defines "NTG_DIST"
+-- 		runtime "Release"
+-- 		optimize "on"
+
+project "Nitro-Editor"
+	location "Nitro-Editor"
 	kind "ConsoleApp"
 	language "C++"
 	cppdialect "C++17"

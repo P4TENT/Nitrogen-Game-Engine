@@ -16,6 +16,9 @@
     <Filter Include="src\Nitrogen\Core\Input">
       <UniqueIdentifier>{D9810D99-45B9-5530-4EC3-B953BA797C29}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\Nitrogen\Debug">
+      <UniqueIdentifier>{B81C35F2-A400-F647-0D61-F09AF963E0C9}</UniqueIdentifier>
+    </Filter>
     <Filter Include="src\Nitrogen\ImGui">
       <UniqueIdentifier>{6C8793F2-586B-5448-C1CB-4E9BADCE3ECA}</UniqueIdentifier>
     </Filter>
@@ -87,6 +90,9 @@
     <ClInclude Include="src\Nitrogen\Core\Window.h">
       <Filter>src\Nitrogen\Core</Filter>
     </ClInclude>
+    <ClInclude Include="src\Nitrogen\Debug\Instrumentor.h">
+      <Filter>src\Nitrogen\Debug</Filter>
+    </ClInclude>
     <ClInclude Include="src\Nitrogen\ImGui\ImGuiLayer.h">
       <Filter>src\Nitrogen\ImGui</Filter>
     </ClInclude>
@@ -99,10 +105,16 @@
     <ClInclude Include="src\Nitrogen\Renderer\OrthographicCamera.h">
       <Filter>src\Nitrogen\Renderer</Filter>
     </ClInclude>
+    <ClInclude Include="src\Nitrogen\Renderer\OrthographicCameraController.h">
+      <Filter>src\Nitrogen\Renderer</Filter>
+    </ClInclude>
     <ClInclude Include="src\Nitrogen\Renderer\RenderAPI.h">
       <Filter>src\Nitrogen\Renderer</Filter>
     </ClInclude>
     <ClInclude Include="src\Nitrogen\Renderer\Renderer.h">
+      <Filter>src\Nitrogen\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Nitrogen\Renderer\Renderer2D.h">
       <Filter>src\Nitrogen\Renderer</Filter>
     </ClInclude>
     <ClInclude Include="src\Nitrogen\Renderer\RendererCommand.h">
@@ -147,9 +159,6 @@
     <ClInclude Include="vendor\stb_image\stb_image.h">
       <Filter>vendor\stb_image</Filter>
     </ClInclude>
-    <ClInclude Include="src\Nitrogen\Renderer\OrthographicCameraController.h" />
-    <ClInclude Include="src\Nitrogen\Renderer\Renderer2D.h" />
-    <ClInclude Include="src\Nitrogen\Debug\Instrumentor.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Nitrogen\Core\CoreApp.cpp">
@@ -176,10 +185,16 @@
     <ClCompile Include="src\Nitrogen\Renderer\OrthographicCamera.cpp">
       <Filter>src\Nitrogen\Renderer</Filter>
     </ClCompile>
+    <ClCompile Include="src\Nitrogen\Renderer\OrthographicCameraController.cpp">
+      <Filter>src\Nitrogen\Renderer</Filter>
+    </ClCompile>
     <ClCompile Include="src\Nitrogen\Renderer\RenderAPI.cpp">
       <Filter>src\Nitrogen\Renderer</Filter>
     </ClCompile>
     <ClCompile Include="src\Nitrogen\Renderer\Renderer.cpp">
+      <Filter>src\Nitrogen\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Nitrogen\Renderer\Renderer2D.cpp">
       <Filter>src\Nitrogen\Renderer</Filter>
     </ClCompile>
     <ClCompile Include="src\Nitrogen\Renderer\RendererCommand.cpp">
@@ -224,7 +239,5 @@
     <ClCompile Include="vendor\stb_image\stb_image.cpp">
       <Filter>vendor\stb_image</Filter>
     </ClCompile>
-    <ClCompile Include="src\Nitrogen\Renderer\OrthographicCameraController.cpp" />
-    <ClCompile Include="src\Nitrogen\Renderer\Renderer2D.cpp" />
   </ItemGroup>
 </Project>
