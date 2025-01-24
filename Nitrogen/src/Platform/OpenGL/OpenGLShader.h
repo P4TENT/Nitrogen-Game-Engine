@@ -23,6 +23,8 @@ namespace Nitrogen{
 		virtual void SetMat3(const std::string& name, const glm::mat3& value) override;
 		virtual void SetFloat4(const std::string& name, const glm::vec4& value) override;
 		virtual void SetFloat3(const std::string& name, const glm::vec3& value) override;
+		virtual void SetFloat2(const std::string& name, const glm::vec2& value) override;
+		virtual void SetFloat(const std::string& name, float value) override;
 
 		void UploadUniformMat4	(const std::string& name, const glm::mat4&	matrix);
 		void UploadUniformMat3	(const std::string& name, const glm::mat3&	matrix);

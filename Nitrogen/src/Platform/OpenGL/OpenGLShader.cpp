@@ -222,6 +222,20 @@ namespace Nitrogen{
 
 		UploadUniformFloat3(name, value);
 	}
+
+	void OpenGLShader::SetFloat2(const std::string& name, const glm::vec2& value)
+	{
+		NTG_PROFILE_FUNCTION();
+
+		UploadUniformFloat2(name, value);
+	}
+
+	void OpenGLShader::SetFloat(const std::string& name, float value)
+	{
+		NTG_PROFILE_FUNCTION();
+
+		UploadUniformFloat(name, value);
+	}
 	
 	void OpenGLShader::UploadUniformMat4(const std::string& name, const glm::mat4& matrix)
 	{
