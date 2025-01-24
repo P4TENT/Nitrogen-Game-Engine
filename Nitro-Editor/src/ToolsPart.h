@@ -66,7 +66,7 @@ static std::string OpenFolderDialog()
     PIDLIST_ABSOLUTE pidl = SHBrowseForFolder(&bi);
     if (pidl != NULL)
     {
-        LPWSTR path;
+        wchar_t path[MAX_PATH];
         if (SHGetPathFromIDList(pidl, path))
         {
             std::wstring wstr(path);
@@ -97,6 +97,8 @@ namespace Nitrogen {
             return ""; // Return empty string if no project was selected
         }
 
+
+
         void NoProjectSelectedPopup()
         {
             if (ImGui::BeginPopup("Warning!"))
@@ -115,6 +117,8 @@ namespace Nitrogen {
                 ImGui::EndPopup();
             }
         }
+
+
 
         void ConsoleTab(const std::string& logFilePath)
         {
@@ -163,6 +167,12 @@ namespace Nitrogen {
                 else if (line.find("[warning]") != std::string::npos) {
                     ImGui::PushStyleColor(ImGuiCol_Text, ImVec4(0.61f, 0.53f, 0.28f, 1.0f)); // Set text color to green
                 }
+                else if (line.find("[error]") != std::string::npos) {
+                    ImGui::PushStyleColor(ImGuiCol_Text, ImVec4(0.71f, 0.43f, 0.28f, 1.0f)); // Set text color to green
+                }
+                else if (line.find("[critical]") != std::string::npos) {
+                    ImGui::PushStyleColor(ImGuiCol_Text, ImVec4(0.61f, 0.23f, 0.28f, 1.0f)); // Set text color to green
+                }
                 else {
                     ImGui::PushStyleColor(ImGuiCol_Text, ImVec4(1.0f, 1.0f, 1.0f, 1.0f)); // Default color
                 }
@@ -184,6 +194,7 @@ namespace Nitrogen {
 
             ImGui::End();
         }
+
 
 
         void OnUpdate()
@@ -238,9 +249,13 @@ namespace Nitrogen {
             ImGui::End();
         }
 
+
+
         std::string GetCurrentProjectPath() const { return m_CurrentProjectPath; }
         std::string GetCurrentProjectName() const { return m_ProjectName; }
         int GetRunOption() const { return m_SelectedOption; }
+
+
 
     private:
         void RunCommandInThread(const std::string& command)

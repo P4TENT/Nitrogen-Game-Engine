@@ -31,11 +31,23 @@ public:
 
 		if (Nitrogen::Input::IsKeyPressed(N_KEY_TAB))
 		{
-			NTG_CLIENT_INFO("Tab Key Pressed!");
+			NTG_CLIENT_FATAL("Tab Key Pressed!");
 		}
 		else if(Nitrogen::Input::IsKeyPressed(N_KEY_ESCAPE))
 		{
-			NTG_CLIENT_WARN("Esc Key Pressed!");
+			NTG_CLIENT_ERROR("Esc Key Pressed!");
+		}
+		else if (Nitrogen::Input::IsKeyPressed(N_KEY_CAPS_LOCK))
+		{
+			NTG_CLIENT_WARN("Caps Key Pressed!");
+		}
+		else if (Nitrogen::Input::IsKeyPressed(N_KEY_LEFT_SHIFT))
+		{
+			NTG_CLIENT_INFO("LShift Key Pressed!");
+		}
+		else if (Nitrogen::Input::IsKeyPressed(N_KEY_LEFT_CONTROL))
+		{
+			NTG_CLIENT_TRACE("LControl Key Pressed!");
 		}
 	}
 

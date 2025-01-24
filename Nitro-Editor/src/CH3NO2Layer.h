@@ -14,6 +14,9 @@ namespace Nitrogen {
 		CH3NO2Layer()
 			: Layer("CH3NO2 Layer"), m_CameraController(1280.f / 720.f)
 		{
+            ImGuiIO& io = ImGui::GetIO();
+            ImFont* NitroFont = io.Fonts->AddFontFromFileTTF("src/fonts/Lato-Regular.ttf", 18);
+            io.FontDefault = NitroFont;
 		}
 
 		void OnUpdate(Timestep deltaT) override
@@ -70,7 +73,7 @@ namespace Nitrogen {
             if (ImGui::BeginMenuBar())
             {
                 if (ImGui::BeginMenu("File"))
-                {
+                {           
                     if (ImGui::MenuItem("Open Project"))
                     {
                         m_CurrentProjectPath = m_ToolsPart.OpenProject();
