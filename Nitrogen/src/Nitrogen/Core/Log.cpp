@@ -2,28 +2,42 @@
 #include "Log.h"
 
 #include "spdlog/sinks/stdout_color_sinks.h"
+#include "spdlog/sinks/basic_file_sink.h"
+#include "spdlog/async.h"  // Include async headers
 
-namespace Nitrogen{
-	std::shared_ptr<spdlog::logger> Log::s_CoreLogger;
-	std::shared_ptr<spdlog::logger> Log::s_ClientLogger;
+namespace Nitrogen {
 
-	void Log::Init() 
-	{
-		std::vector<spdlog::sink_ptr> logSinks;
-		logSinks.emplace_back(std::make_shared<spdlog::sinks::stdout_color_sink_mt>());
-		logSinks.emplace_back(std::make_shared<spdlog::sinks::basic_file_sink_mt>("logs/Client.log", true));
+    std::shared_ptr<spdlog::logger> Log::s_CoreLogger;
+    std::shared_ptr<spdlog::logger> Log::s_ClientLogger;
 
-		logSinks[0]->set_pattern("%^[%T] %n: %v%$");
-		logSinks[1]->set_pattern("[%T] [%l] %n: %v");
+    void Log::Init()
+    {
+        // Initialize the thread pool for async logging
+        spdlog::init_thread_pool(8192, 1); // 8192 queue size, 1 thread for processing log requests
 
-		s_CoreLogger = std::make_shared<spdlog::logger>("NITROGEN", begin(logSinks), end(logSinks));
-		spdlog::register_logger(s_CoreLogger);
-		s_CoreLogger->set_level(spdlog::level::trace);
-		s_CoreLogger->flush_on(spdlog::level::trace);
+        std::vector<spdlog::sink_ptr> logSinks;
 
-		s_ClientLogger = std::make_shared<spdlog::logger>("APP", begin(logSinks), end(logSinks));
-		spdlog::register_logger(s_ClientLogger);
-		s_ClientLogger->set_level(spdlog::level::trace);
-		s_ClientLogger->flush_on(spdlog::level::trace);
-	}
+        // Create sinks
+        logSinks.emplace_back(std::make_shared<spdlog::sinks::stdout_color_sink_mt>());
+        logSinks.emplace_back(std::make_shared<spdlog::sinks::basic_file_sink_mt>("logs/Client.log", true));
+
+        // Set patterns for sinks
+        logSinks[0]->set_pattern("%^[%T] %n: %v%$");
+        logSinks[1]->set_pattern("[%T] [%l] %n: %v");
+
+        // Create async logger
+        s_CoreLogger = std::make_shared<spdlog::logger>("NITROGEN", logSinks.begin(), logSinks.end());
+        spdlog::register_logger(s_CoreLogger);
+        s_CoreLogger->set_level(spdlog::level::trace);
+        s_CoreLogger->flush_on(spdlog::level::critical);  // Optional: Automatically flush on certain levels
+
+        // Create client logger
+        s_ClientLogger = std::make_shared<spdlog::logger>("APP", logSinks.begin(), logSinks.end());
+        spdlog::register_logger(s_ClientLogger);
+        s_ClientLogger->set_level(spdlog::level::trace);
+        s_ClientLogger->flush_on(spdlog::level::critical);  // Optional: Automatically flush on certain levels
+
+        // Set the flush interval for async logger (flushes every 1000 seconds)
+        spdlog::flush_every(std::chrono::seconds(3));
+    }
 }

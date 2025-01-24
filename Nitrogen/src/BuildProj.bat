@@ -18,12 +18,12 @@ mkdir "%ProjName%"
 cd "%ProjName%"
 set ProjectPath=%cd%
 
-mkdir backend
-mkdir backend\lib\debug
-mkdir backend\lib\release
-mkdir backend\scripts
-
-cd %ProjectPath%
+mkdir "backend"
+mkdir "backend\lib\debug"
+mkdir "backend\lib\release"
+mkdir "backend\scripts"
+mkdir "%ProjName%\logs"
+copy NUL "%ProjName%\logs\Client.log"
 
 :: Create the premake5.lua file
 echo -- %ProjName% > premake5.lua

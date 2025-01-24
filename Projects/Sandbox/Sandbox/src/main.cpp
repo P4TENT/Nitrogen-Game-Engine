@@ -28,11 +28,19 @@ public:
 		Nitrogen::Renderer2D::DrawQuad({ 0.0f, 0.0f, -0.1f }, { 10.0f, 10.0f }, m_Texture2d);
 
 		Nitrogen::Renderer2D::EndScene();
+
+		if (Nitrogen::Input::IsKeyPressed(N_KEY_TAB))
+		{
+			NTG_CLIENT_INFO("Tab Key Pressed!");
+		}
+		else if(Nitrogen::Input::IsKeyPressed(N_KEY_ESCAPE))
+		{
+			NTG_CLIENT_WARN("Esc Key Pressed!");
+		}
 	}
 
 	void OnImGuiRender() override
 	{
-		NTG_CLIENT_INFO("OnImGuiRender");
 	}
 
 	void OnEvent(Nitrogen::Event& e) override

@@ -1,83 +1,11 @@
-#pragma once
+﻿#pragma once
 
 #include <Nitrogen.h>
 
 #include <imgui.h>
 
-#include <shlobj.h>
-
-// OpenFolderDialog() IS TEMPORARY - TODO: MAKE A NEW EXPLORER FROM SCRATCH
-static std::string OpenFolderDialog()
-{
-    wchar_t exePath[MAX_PATH];
-
-    // Get the full path of the current executable
-    DWORD length = GetModuleFileName(NULL, exePath, MAX_PATH);
-
-    if (length == 0)
-    {
-        // Handle error if the function fails
-        std::wcerr << L"Failed to get executable path!" << std::endl;
-    }
-
-    std::wstring path = std::wstring(exePath);
-
-    if (path.empty()) NTG_CLIENT_ERROR("The selected Path is Empty!");
-
-    // Extract the folder path from the executable path (get directory)
-    size_t pos = path.find_last_of(L"\\/");
-    if (pos != std::wstring::npos)
-    {
-        path = path.substr(0, pos); // Remove the executable name, keep the directory
-    }
-
-    // Go 3 directories back
-    int backCount = 3;
-    for (int i = 0; i < backCount; i++) {
-        pos = path.find_last_of(L"\\/");
-        if (pos != std::wstring::npos) {
-            path = path.substr(0, pos); // Move 1 directory back
-        }
-        else {
-            // If there's not enough directories, just break out early
-            break;
-        }
-    }
-
-    std::wstring folderName = L"Projects";
-
-    if (!path.empty() && path.back() != L'\\' && path.back() != L'/') {
-        path += L"\\";
-    }
-
-    // Append the folder
-    path += folderName;
-
-    BROWSEINFOW bi = { 0 };
-    bi.lpszTitle = L"Select a Project.";
-
-    if (!path.empty()) {
-        // Convert the starting path to a PIDLIST_ABSOLUTE
-        PIDLIST_ABSOLUTE pidlRoot;
-        if (SUCCEEDED(SHParseDisplayName(path.c_str(), NULL, &pidlRoot, 0, NULL))) {
-            bi.pidlRoot = pidlRoot;
-        }
-    }
-
-    // Open the folder picker dialog
-    PIDLIST_ABSOLUTE pidl = SHBrowseForFolder(&bi);
-    if (pidl != NULL)
-    {
-        LPWSTR path;
-        if (SHGetPathFromIDList(pidl, path))
-        {
-            std::wstring wstr(path);
-
-            return std::string(wstr.begin(), wstr.end());  // Return the selected folder path
-        }
-    }
-    return "";  // Return empty string if the user cancels
-}
+#include "ToolsPart.h"
+#include "shellapi.h"
 
 namespace Nitrogen {
 	class CH3NO2Layer : public Nitrogen::Layer
@@ -99,7 +27,7 @@ namespace Nitrogen {
 			Renderer::EndScene();
 		}
 
-        void OnImGuiRender() override
+        void CH3NO2Layer::OnImGuiRender() override
         {
             ///////////////////////////////////////////
             // IMGUI DOCKSPACE ////////////////////////
@@ -122,7 +50,6 @@ namespace Nitrogen {
                 windowFlags |= ImGuiWindowFlags_NoBringToFrontOnFocus | ImGuiWindowFlags_NoNavFocus;
             }
 
-            // Begin the main dockspace window
             ImGui::Begin("Dockspace", &dockspaceOpen, windowFlags);
 
             if (optFullscreen)
@@ -139,111 +66,45 @@ namespace Nitrogen {
             {
                 ImGui::Text("Docking is not enabled! Please enable docking in ImGuiIO.");
             }
-            ///////////////////////////////////////////
-            // IMGUI DOCKSPACE ////////////////////////
-            ///////////////////////////////////////////
 
-            ///////////////////////////////////////////
-            // TOOLS WINDOW ///////////////////////////
-            ///////////////////////////////////////////
-            ImGui::Begin("Tools");
-
-            // * OPEN PROJECT POPUP
-            if (ImGui::Button("Open Project"))
+            if (ImGui::BeginMenuBar())
             {
-                // OpenFolderDialog() IS TEMPORARY - TODO: MAKE A NEW EXPLORER FROM SCRATCH
-                std::string folderPath = OpenFolderDialog();
-                if (!folderPath.empty())
+                if (ImGui::BeginMenu("File"))
                 {
-                    CurrentProjectPath = folderPath;
-                    size_t pos = CurrentProjectPath.find_last_of("/\\");
-                    std::string ProjectName = "Nitro-Engine: " + CurrentProjectPath.substr(pos + 1);  // Extract the folder name after the last separator
-                    Application::Get().GetWindow().SetWindowTitle(ProjectName.c_str());
-                }
-            }
-
-            // * RUN DEBUG / RELEASE
-            const char* options[] = { "Release", "Debug" };
-            static int selectedOption = 0;
-            ImGui::SetNextItemWidth(100);
-            if (ImGui::BeginCombo("##BuildOptions", options[selectedOption]))
-            {
-                for (int i = 0; i < IM_ARRAYSIZE(options); i++)
-                {
-                    bool isSelected = (selectedOption == i);
-                    if (ImGui::Selectable(options[i], isSelected))
+                    if (ImGui::MenuItem("Open Project"))
                     {
-                        selectedOption = i;
+                        m_CurrentProjectPath = m_ToolsPart.OpenProject();
+                        m_ToolsPart.GetRunOption() == 0 ?
+                            m_CurrentProjectLogPath = m_CurrentProjectPath + "\\bin\\Release-windows-x86_64\\" + m_ToolsPart.GetCurrentProjectName() + "\\logs\\Client.log" :
+                            m_CurrentProjectLogPath = m_CurrentProjectPath + "\\bin\\Debug-windows-x86_64\\" + m_ToolsPart.GetCurrentProjectName() + "\\logs\\Client.log";
                     }
-                    if (isSelected)
-                    {
-                        ImGui::SetItemDefaultFocus();
-                    }
+                    ImGui::EndMenu();
                 }
-                ImGui::EndCombo();
-            }
-            ImGui::SameLine();
-            if (ImGui::Button("Run"))
-            {
-                if (CurrentProjectPath != "") // Check if the path is empty
+
+                if (ImGui::BeginMenu("Project"))
                 {
-                    if (selectedOption == 0) // Release
+                    if (ImGui::MenuItem("Open Project In Explorer"))
                     {
-                        std::string command = "cd /d " + CurrentProjectPath + "/backend/scripts && RunRelease.bat";
-                        int result = system(command.c_str());
-                        if (result != 0)
+                        if (m_CurrentProjectPath != "") 
                         {
-                            // Handle the error if the batch file fails to execute
-                            std::cerr << "Running Error";
+                            ShellExecuteA(NULL, "open", m_CurrentProjectPath.c_str(), NULL, NULL, SW_SHOWDEFAULT);
+                        } 
+                        else 
+                        {
+                            ImGui::OpenPopup("Warning!");
                         }
                     }
-                    else if (selectedOption == 1) // Debug
-                    {
-                        std::string command = "cd /d " + CurrentProjectPath + "/backend/scripts && RunDebug.bat";
-                        int result = system(command.c_str());
-                        if (result != 0)
-                        {
-                            // Handle the error if the batch file fails to execute
-                            std::cerr << "Running Error";
-                        }
-                    }
+                    ImGui::EndMenu();
                 }
-                else
-                {
-                    ImGui::OpenPopup("Warning!");
-                }
+                ImGui::EndMenuBar();
             }
 
-            // Popup for Warning
-            if (ImGui::BeginPopup("Warning!"))
-            {
-                // Set the window size for the popup
-                ImGui::SetWindowSize(ImVec2(300, 150), ImGuiCond_Always);
+            m_ToolsPart.ConsoleTab(m_CurrentProjectLogPath);
 
-                // Display a warning message
-                ImGui::Text("There is no project selected!");
-                ImVec2 windowSize = ImGui::GetWindowSize();
-                ImVec2 buttonSize = ImVec2(ImGui::CalcTextSize("Ok").x, ImGui::CalcTextSize("Ok").y - 20); // Padding
-                ImVec2 centerPos = ImVec2((windowSize.x - buttonSize.x) * 0.5f, (windowSize.y - buttonSize.y) * 0.5f);
-                ImGui::SetCursorPos(centerPos);
-
-                // Buttons to close the popup or perform an action
-                if (ImGui::Button("Ok"))
-                {
-                    // Close the popup when Ok is clicked
-                    ImGui::CloseCurrentPopup();  // Close the popup
-                }
-                ImGui::EndPopup();
-            }
-            ///////////////////////////////////////////
-            // TOOLS WINDOW ///////////////////////////
-            ///////////////////////////////////////////
-
-            ImGui::End(); // End tools window
+            m_ToolsPart.OnUpdate();
 
             ImGui::End(); // End dockspace
         }
-
 
 		void OnEvent(Nitrogen::Event& e) override
 		{
@@ -252,6 +113,8 @@ namespace Nitrogen {
 
 	private:
 	    Nitrogen::OrthographicCameraController m_CameraController;
-        std::string CurrentProjectPath;
+        ToolsPart m_ToolsPart;
+        std::string m_CurrentProjectPath = "";
+        std::string m_CurrentProjectLogPath = "";
 	};
 }

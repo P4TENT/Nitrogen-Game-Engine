@@ -123,7 +123,6 @@ namespace Nitrogen {
     };
 }
 
-#define NTG_PROFILE 1
 #if NTG_PROFILE
     #define NTG_PROFILE_BEGIN_SESSION(name, filepath) ::Nitrogen::Instrumentor::Get().BeginSession(name, filepath)
     #define NTG_PROFILE_END_SESSION() ::Nitrogen::Instrumentor::Get().EndSession()
