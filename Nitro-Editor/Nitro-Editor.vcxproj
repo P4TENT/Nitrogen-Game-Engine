@@ -137,16 +137,16 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="src\CH3NO2Layer.h" />
+    <ClInclude Include="src\ToolsPart.h" />
+  </ItemGroup>
+  <ItemGroup>
     <ClCompile Include="src\Nitro-Editor.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Nitrogen\Nitrogen.vcxproj">
       <Project>{CB054921-B7D2-A32C-E0EB-91D4CC17D9BA}</Project>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="src\CH3NO2Layer.h" />
-    <ClInclude Include="src\ToolsPart.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

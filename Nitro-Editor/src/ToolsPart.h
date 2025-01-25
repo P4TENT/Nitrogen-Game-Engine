@@ -98,7 +98,6 @@ namespace Nitrogen {
         }
 
 
-
         void NoProjectSelectedPopup()
         {
             if (ImGui::BeginPopup("Warning!"))
@@ -117,7 +116,6 @@ namespace Nitrogen {
                 ImGui::EndPopup();
             }
         }
-
 
 
         void ConsoleTab(const std::string& logFilePath)
@@ -196,7 +194,6 @@ namespace Nitrogen {
         }
 
 
-
         void OnUpdate()
         {
             ImGui::Begin("Project", nullptr);
@@ -250,11 +247,9 @@ namespace Nitrogen {
         }
 
 
-
         std::string GetCurrentProjectPath() const { return m_CurrentProjectPath; }
         std::string GetCurrentProjectName() const { return m_ProjectName; }
         int GetRunOption() const { return m_SelectedOption; }
-
 
 
     private:

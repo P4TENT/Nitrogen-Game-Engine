@@ -114,6 +114,11 @@ copy "%EnginePath%\vendor\GLFW\bin\Release-windows-x86_64\GLFW\GLFW.lib" "%Proje
 copy "%EnginePath%\vendor\Glad\bin\Release-windows-x86_64\Glad\Glad.lib" "%ProjectPath%\backend\lib\release"
 copy "%EnginePath%\vendor\imgui\bin\Release-windows-x86_64\ImGui\ImGui.lib" "%ProjectPath%\backend\lib\release"
 
+xcopy "%EnginePath%\src\ProjectVendor\shaders" "%ProjectPath%\%ProjName%\src\assets\shaders" /E /I /Y
+
+mkdir "%ProjectPath%\bin\Release-windows-x86_64\%ProjName%\logs"
+copy NUL > "%ProjectPath%\bin\Release-windows-x86_64\%ProjName%\logs\Client.log"
+
 cd "%ProjectPath%\backend\scripts"
 
 :: Create the scripts

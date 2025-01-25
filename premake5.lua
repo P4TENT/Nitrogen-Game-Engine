@@ -122,7 +122,7 @@ project "Nitrogen"
 -- 		{
 -- 			"NTG_PLATFORM_WINDOWS"
 -- 		}
-asdas
+
 -- 	filter "configurations:Debug"
 -- 		defines "NTG_DEBUG"
 -- 		runtime "Debug"
