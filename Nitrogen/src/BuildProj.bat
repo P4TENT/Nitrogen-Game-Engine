@@ -107,12 +107,22 @@ copy "%EnginePath%\..\bin\Debug-windows-x86_64\Nitrogen\Nitrogen.lib" "%ProjectP
 copy "%EnginePath%\vendor\GLFW\bin\Debug-windows-x86_64\GLFW\GLFW.lib" "%ProjectPath%\backend\lib\debug"
 copy "%EnginePath%\vendor\Glad\bin\Debug-windows-x86_64\Glad\Glad.lib" "%ProjectPath%\backend\lib\debug"
 copy "%EnginePath%\vendor\imgui\bin\Debug-windows-x86_64\ImGui\ImGui.lib" "%ProjectPath%\backend\lib\debug"
+:: Copy the Pdbs for Debug Mode
+copy "%EnginePath%\..\bin\Debug-windows-x86_64\Nitrogen\Nitrogen.pdb" "%ProjectPath%\backend\lib\debug"
+copy "%EnginePath%\vendor\GLFW\bin\Debug-windows-x86_64\GLFW\GLFW.pdb" "%ProjectPath%\backend\lib\debug"
+copy "%EnginePath%\vendor\Glad\bin\Debug-windows-x86_64\Glad\Glad.pdb" "%ProjectPath%\backend\lib\debug"
+copy "%EnginePath%\vendor\imgui\bin\Debug-windows-x86_64\ImGui\ImGui.pdb" "%ProjectPath%\backend\lib\debug"
 
-:: Copy the libs for Release Mode
+:: Copy the Libs for Release Mode
 copy "%EnginePath%\..\bin\Release-windows-x86_64\Nitrogen\Nitrogen.lib" "%ProjectPath%\backend\lib\release"
 copy "%EnginePath%\vendor\GLFW\bin\Release-windows-x86_64\GLFW\GLFW.lib" "%ProjectPath%\backend\lib\release"
 copy "%EnginePath%\vendor\Glad\bin\Release-windows-x86_64\Glad\Glad.lib" "%ProjectPath%\backend\lib\release"
 copy "%EnginePath%\vendor\imgui\bin\Release-windows-x86_64\ImGui\ImGui.lib" "%ProjectPath%\backend\lib\release"
+:: Copy the Pdbs for Release Mode
+copy "%EnginePath%\..\bin\Release-windows-x86_64\Nitrogen\Nitrogen.pdb" "%ProjectPath%\backend\lib\release"
+copy "%EnginePath%\vendor\GLFW\bin\Release-windows-x86_64\GLFW\GLFW.pdb" "%ProjectPath%\backend\lib\release"
+copy "%EnginePath%\vendor\Glad\bin\Release-windows-x86_64\Glad\Glad.pdb" "%ProjectPath%\backend\lib\release"
+copy "%EnginePath%\vendor\imgui\bin\Release-windows-x86_64\ImGui\ImGui.pdb" "%ProjectPath%\backend\lib\release"
 
 xcopy "%EnginePath%\src\ProjectVendor\shaders" "%ProjectPath%\%ProjName%\src\assets\shaders" /E /I /Y
 
@@ -121,7 +131,7 @@ copy NUL > "%ProjectPath%\bin\Release-windows-x86_64\%ProjName%\logs\Client.log"
 
 cd "%ProjectPath%\backend\scripts"
 
-:: Create the scripts
+:::: Create the scripts
 :: RunRelease.bat
 echo @echo off > RunRelease.bat
 echo. >> RunRelease.bat

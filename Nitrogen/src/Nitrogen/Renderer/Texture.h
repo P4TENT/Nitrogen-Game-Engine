@@ -24,6 +24,8 @@ namespace Nitrogen{
 	public:
 		static Ref<Texture2D> Create(const std::string& file_path);
 		static Ref<Texture2D> Create(uint32_t width, uint32_t height);
+
+		virtual bool operator==(const Texture& other) const = 0;
 	};
 
 }

@@ -165,13 +165,19 @@ project "Nitro-Editor"
 		"Nitrogen"
 	}
 
+	defines 
+	{
+		"NITRO_EDITOR_DEF"
+	}
+
 	filter "system:windows"
 		staticruntime "On"  
 		systemversion "latest"
 
 		defines
 		{
-			"NTG_PLATFORM_WINDOWS"
+			"NTG_PLATFORM_WINDOWS",
+			"NITRO_EDITOR_DEF"
 		}
 
 	filter "configurations:Debug"

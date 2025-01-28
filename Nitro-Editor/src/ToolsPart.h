@@ -1,13 +1,11 @@
 #pragma once
 
-#include <Nitrogen.h>
 #include <imgui.h>
 #include <shlobj.h>
 #include <string>
 #include <fstream>
 #include <filesystem> 
-#include <thread>  // Include thread support
-#include <iostream> // Include for std::cerr
+#include <thread> 
 
 // OpenFolderDialog() IS TEMPORARY - TODO: MAKE A NEW EXPLORER FROM SCRATCH
 static std::string OpenFolderDialog()
