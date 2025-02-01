@@ -16,43 +16,55 @@ public:
 
 	void OnUpdate(Nitrogen::Timestep deltaT) override
 	{
+		// Update
 		m_CameraController.OnUpdate(deltaT);
 
-		Nitrogen::RendererCommand::SetClearColor({ 0.1f, 0.1f, 0.1f, 1 });
-		Nitrogen::RendererCommand::Clear();
+		// Render
+		Nitrogen::Renderer2D::ResetStats();
+		{
+			NTG_PROFILE_SCOPE("Renderer Prep");
+			Nitrogen::RendererCommand::SetClearColor({ 0.1f, 0.1f, 0.1f, 1 });
+			Nitrogen::RendererCommand::Clear();
+		}
 
-		Nitrogen::Renderer2D::BeginScene(m_CameraController.GetCamera());
-		
-		Nitrogen::Renderer2D::DrawQuad({ -1.0f, 0.0f }, { 0.8f, 0.8f }, { 0.8f, 0.2f, 0.3f, 1.0f });
-		Nitrogen::Renderer2D::DrawQuad({ 0.5f, -0.5f }, { 0.5f, 0.75f }, { 0.2f, 0.3f, 0.8f, 1.0f });
-		Nitrogen::Renderer2D::DrawQuad({ 0.0f,	0.0f }, { 10.0f, 10.0f }, m_Texture2d);
+		{
+			static float rotation = 0.0f;
+			rotation += deltaT * 50.0f;
 
-		Nitrogen::Renderer2D::EndScene();
+			NTG_PROFILE_SCOPE("Renderer Draw");
+			Nitrogen::Renderer2D::BeginScene(m_CameraController.GetCamera());
+			Nitrogen::Renderer2D::DrawRotatedQuad({ 1.0f, 0.0f }, { 0.8f, 0.8f }, -45.0f, { 0.8f, 0.2f, 0.3f, 1.0f });
+			Nitrogen::Renderer2D::DrawQuad({ -1.0f, 0.0f }, { 0.8f, 0.8f }, { 0.8f, 0.2f, 0.3f, 1.0f });
+			Nitrogen::Renderer2D::DrawQuad({ 0.5f, -0.5f }, { 0.5f, 0.75f }, { 0.2f, 0.3f, 0.8f, 1.0f });
+			Nitrogen::Renderer2D::DrawQuad({ 0.0f, 0.0f, -0.1f }, { 20.0f, 20.0f }, m_Texture2d, 10.0f);
+			Nitrogen::Renderer2D::DrawRotatedQuad({ -2.0f, 0.0f, 0.0f }, { 1.0f, 1.0f }, rotation, m_Texture2d, 20.0f);
+			Nitrogen::Renderer2D::EndScene();
 
-		if (Nitrogen::Input::IsKeyPressed(N_KEY_TAB))
-		{
-			NTG_CLIENT_FATAL("Tab Key Pressed!");
-		}
-		else if(Nitrogen::Input::IsKeyPressed(N_KEY_ESCAPE))
-		{
-			NTG_CLIENT_ERROR("Esc Key Pressed!");
-		}
-		else if (Nitrogen::Input::IsKeyPressed(N_KEY_CAPS_LOCK))
-		{
-			NTG_CLIENT_WARN("Caps Key Pressed!");
-		}
-		else if (Nitrogen::Input::IsKeyPressed(N_KEY_LEFT_SHIFT))
-		{
-			NTG_CLIENT_INFO("LShift Key Pressed!");
-		}
-		else if (Nitrogen::Input::IsKeyPressed(N_KEY_LEFT_CONTROL))
-		{
-			NTG_CLIENT_TRACE("LControl Key Pressed!");
+			Nitrogen::Renderer2D::BeginScene(m_CameraController.GetCamera());
+			for (float y = -5.0f; y < 5.0f; y += 0.5f)
+			{
+				for (float x = -5.0f; x < 5.0f; x += 0.5f)
+				{
+					glm::vec4 color = { (x + 5.0f) / 10.0f, 0.4f, (y + 5.0f) / 10.0f, 0.4f };
+					Nitrogen::Renderer2D::DrawQuad({ x, y }, { 0.45f, 0.45f }, color);
+				}
+			}
+			Nitrogen::Renderer2D::EndScene();
 		}
 	}
 
 	void OnImGuiRender() override
 	{
+		ImGui::Begin("Stats");
+		
+		auto stats = Nitrogen::Renderer2D::GetStats();
+		ImGui::Text("Renderer2D Stats:");
+		ImGui::Text("Draw Calls: %d", stats.DrawCalls);
+		ImGui::Text("Quads: %d", stats.QuadCount);
+		ImGui::Text("Vertices: %d", stats.GetTotalVertexCount());
+		ImGui::Text("Indices: %d", stats.GetTotalIndexCount());
+
+		ImGui::End();
 	}
 
 	void OnEvent(Nitrogen::Event& e) override

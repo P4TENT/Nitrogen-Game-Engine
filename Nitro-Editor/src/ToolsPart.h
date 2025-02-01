@@ -194,9 +194,22 @@ namespace Nitrogen {
 
         void OnUpdate()
         {
-            ImGui::Begin("Project", nullptr);
+            ImGui::Begin("Project", nullptr, ImGuiWindowFlags_NoScrollbar);
             ImVec2 windowSize = ImVec2(300, 200);
             ImGui::SetWindowSize(windowSize);
+
+            ImVec4 titleColor = ImVec4(0.7f, 0.8f, 0.7f, 1.0f);  // Green accent color (nitrogen-like)
+            ImVec4 textColor = ImVec4(1.0f, 1.0f, 1.0f, 1.0f);   // White text
+            ImVec4 separatorColor = ImVec4(0.4f, 0.5f, 0.6f, 0.5f);  // Light green separator
+
+            // Title text with nitrogen theme colors
+            std::string editorShi = (m_ProjectName.empty()) ? "Nitrogen Editor Version " + m_EditorVersion : "Project " + m_ProjectName;
+            ImGui::TextColored(titleColor, "%s", editorShi.c_str());
+
+            // Separator with a nitrogen-style green color
+            ImGui::PushStyleColor(ImGuiCol_Separator, separatorColor);
+            ImGui::Separator();
+            ImGui::PopStyleColor();
 
             const char* options[] = { "Release", "Debug" };
             ImGui::SetNextItemWidth(100);
@@ -244,11 +257,9 @@ namespace Nitrogen {
             ImGui::End();
         }
 
-
         std::string GetCurrentProjectPath() const { return m_CurrentProjectPath; }
         std::string GetCurrentProjectName() const { return m_ProjectName; }
         int GetRunOption() const { return m_SelectedOption; }
-
 
     private:
         void RunCommandInThread(const std::string& command)
@@ -262,7 +273,8 @@ namespace Nitrogen {
 
     private:
         std::string m_CurrentProjectPath = "";
-        std::string m_ProjectName;
+        std::string m_ProjectName = "";
+        std::string m_EditorVersion = "0.0.1b";
         int m_SelectedOption = 0;
     };
 }

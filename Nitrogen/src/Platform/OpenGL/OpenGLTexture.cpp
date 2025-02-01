@@ -21,7 +21,7 @@ namespace Nitrogen{
 
 		m_Width = width;
 		m_Height = height;
-		m_Channels = channels;
+		m_Channels = 4;
 
 		GLenum internalFormat = 0, dataFormat = 0;
 		if (channels == 4)

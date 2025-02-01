@@ -77,6 +77,7 @@ namespace Nitrogen {
                     if (ImGui::MenuItem("Open Project"))
                     {
                         m_CurrentProjectPath = m_ToolsPart.OpenProject();
+                        if (m_CurrentProjectPath != "")
                         m_ToolsPart.GetRunOption() == 0 ?
                             m_CurrentProjectLogPath = m_CurrentProjectPath + "\\bin\\Release-windows-x86_64\\" + m_ToolsPart.GetCurrentProjectName() + "\\logs\\Client.log" :
                             m_CurrentProjectLogPath = m_CurrentProjectPath + "\\bin\\Debug-windows-x86_64\\" + m_ToolsPart.GetCurrentProjectName() + "\\logs\\Client.log";
