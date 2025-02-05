@@ -8,16 +8,18 @@
 #include "shellapi.h"
 
 namespace Nitrogen {
-	class CH3NO2Layer : public Nitrogen::Layer
+	class CH3NO2Layer : public Layer
 	{
 	public:
 		CH3NO2Layer()
-			: Layer("CH3NO2 Layer"), m_CameraController(1280.f / 720.f)
-		{
+			: Layer("CH3NO2 Layer"), m_CameraController(1280.f / 720.f) {}
+
+        void OnAttach() override
+        {
             ImGuiIO& io = ImGui::GetIO();
             ImFont* NitroFont = io.Fonts->AddFontFromFileTTF("src/fonts/Lato-Regular.ttf", 18);
             io.FontDefault = NitroFont;
-		}
+        }
 
 		void OnUpdate(Timestep deltaT) override
 		{
@@ -27,10 +29,11 @@ namespace Nitrogen {
 			RendererCommand::Clear();
 
 			Renderer::BeginScene(m_CameraController.GetCamera());
+            m_ActiveScene->OnUpdate(deltaT);
 			Renderer::EndScene();
 		}
 
-        void CH3NO2Layer::OnImGuiRender() override
+        void OnImGuiRender() override
         {
             ///////////////////////////////////////////
             // IMGUI DOCKSPACE ////////////////////////
@@ -110,15 +113,17 @@ namespace Nitrogen {
             ImGui::End(); // End dockspace
         }
 
-		void OnEvent(Nitrogen::Event& e) override
+		void OnEvent(Event& e) override
 		{
 			m_CameraController.OnEvent(e);
 		}
 
 	private:
-	    Nitrogen::OrthographicCameraController m_CameraController;
+	    OrthographicCameraController m_CameraController;
         ToolsPart m_ToolsPart;
         std::string m_CurrentProjectPath = "";
         std::string m_CurrentProjectLogPath = "";
+
+        Ref<Scene> m_ActiveScene;
 	};
 }

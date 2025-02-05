@@ -36,6 +36,7 @@ echo 	architecture "x64" >> premake5.lua
 echo. >> premake5.lua
 echo 	IncludeDir = {} >> premake5.lua
 echo 	IncludeDir["glm"] = "../../Nitrogen/vendor/glm" >> premake5.lua
+echo 	IncludeDir["entt"] = "../../Nitrogen/vendor/entt" >> premake5.lua
 echo project "%ProjName%" >> premake5.lua
 echo     location "%ProjName%" >> premake5.lua
 echo     kind "ConsoleApp" >> premake5.lua
@@ -57,7 +58,8 @@ echo     { >> premake5.lua
 echo         "../../Nitrogen/vendor/spdlog/include", >> premake5.lua
 echo         "../../Nitrogen/vendor/imgui", >> premake5.lua
 echo         "../../Nitrogen/src", >> premake5.lua
-echo         "%%{IncludeDir.glm}" >> premake5.lua
+echo         "%%{IncludeDir.glm}", >> premake5.lua
+echo         "%%{IncludeDir.entt}" >> premake5.lua
 echo     } >> premake5.lua
 echo. >> premake5.lua
 echo     links >> premake5.lua

@@ -3,7 +3,7 @@
 #include "CH3NO2Layer.h"
 
 namespace Nitrogen {
-	class NitroEditor : public Nitrogen::Application
+	class NitroEditor : public Application
 	{
 	public:
 		NitroEditor()
@@ -17,9 +17,9 @@ namespace Nitrogen {
 
 		}
 	};
-}
 
-Nitrogen::Application* Nitrogen::CreateApplication()
-{
-	return new NitroEditor();
+	Application* CreateApplication()
+	{
+		return new NitroEditor();
+	}
 }

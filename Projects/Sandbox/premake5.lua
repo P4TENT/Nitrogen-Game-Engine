@@ -8,6 +8,7 @@ workspace "Sandbox"
  
 	IncludeDir = {} 
 	IncludeDir["glm"] = "../../Nitrogen/vendor/glm" 
+	IncludeDir["entt"] = "../../Nitrogen/vendor/entt" 
 project "Sandbox" 
     location "Sandbox" 
     kind "ConsoleApp" 
@@ -29,7 +30,8 @@ project "Sandbox"
         "../../Nitrogen/vendor/spdlog/include", 
         "../../Nitrogen/vendor/imgui", 
         "../../Nitrogen/src", 
-        "%{IncludeDir.glm}" 
+        "%{IncludeDir.glm}", 
+        "%{IncludeDir.entt}" 
     } 
  
     links 

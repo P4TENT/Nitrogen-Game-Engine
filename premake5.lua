@@ -16,6 +16,7 @@ IncludeDir["Glad"] = "Nitrogen/vendor/Glad/include"
 IncludeDir["ImGui"] = "Nitrogen/vendor/imgui"
 IncludeDir["glm"] = "Nitrogen/vendor/glm"
 IncludeDir["stb_image"] = "Nitrogen/vendor/stb_image"
+IncludeDir["entt"] = "Nitrogen/vendor/entt"
 
 include "Nitrogen/vendor/GLFW"
 include "Nitrogen/vendor/Glad"
@@ -54,7 +55,8 @@ project "Nitrogen"
 		"%{IncludeDir.Glad}",
 		"%{IncludeDir.ImGui}",
 		"%{IncludeDir.glm}",
-		"%{IncludeDir.stb_image}"
+		"%{IncludeDir.stb_image}",
+		"%{IncludeDir.entt}"
 	}
 	links 
 	{
@@ -157,7 +159,8 @@ project "Nitro-Editor"
 		"Nitrogen/vendor/spdlog/include",
 		"Nitrogen/vendor/imgui",
 		"Nitrogen/src",
-		"%{IncludeDir.glm}"
+		"%{IncludeDir.glm}",
+		"%{IncludeDir.entt}"
 	}
 
 	links

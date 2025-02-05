@@ -25,6 +25,9 @@
     <Filter Include="src\Nitrogen\Renderer">
       <UniqueIdentifier>{A84639D8-14B3-F4D2-DDA6-8C3049D2163B}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\Nitrogen\Scene">
+      <UniqueIdentifier>{5F7F43F3-4B63-0449-B4C3-FE9BA0C6EECA}</UniqueIdentifier>
+    </Filter>
     <Filter Include="src\Platform">
       <UniqueIdentifier>{21CA02E5-0D2D-9289-B6B2-CA3FA2F45D0C}</UniqueIdentifier>
     </Filter>
@@ -129,6 +132,9 @@
     <ClInclude Include="src\Nitrogen\Renderer\VertexArray.h">
       <Filter>src\Nitrogen\Renderer</Filter>
     </ClInclude>
+    <ClInclude Include="src\Nitrogen\Scene\Scene.h">
+      <Filter>src\Nitrogen\Scene</Filter>
+    </ClInclude>
     <ClInclude Include="src\Platform\OpenGL\OpenGLBuffer.h">
       <Filter>src\Platform\OpenGL</Filter>
     </ClInclude>
@@ -159,6 +165,8 @@
     <ClInclude Include="vendor\stb_image\stb_image.h">
       <Filter>vendor\stb_image</Filter>
     </ClInclude>
+    <ClInclude Include="src\Nitrogen\Scene\Components.h" />
+    <ClInclude Include="src\Nitrogen\Scene\Entity.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Nitrogen\Core\CoreApp.cpp">
@@ -208,6 +216,9 @@
     </ClCompile>
     <ClCompile Include="src\Nitrogen\Renderer\VertexArray.cpp">
       <Filter>src\Nitrogen\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Nitrogen\Scene\Scene.cpp">
+      <Filter>src\Nitrogen\Scene</Filter>
     </ClCompile>
     <ClCompile Include="src\Platform\OpenGL\OpenGLBuffer.cpp">
       <Filter>src\Platform\OpenGL</Filter>

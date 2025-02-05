@@ -35,5 +35,4 @@ namespace Nitrogen{
 	{
 		glViewport(x, y, width, height);
 	}
-
 }
