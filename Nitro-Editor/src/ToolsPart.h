@@ -1,77 +1,62 @@
-#pragma once
+﻿#pragma once
 
 #include <imgui.h>
-#include <shlobj.h>
 #include <string>
 #include <fstream>
 #include <filesystem> 
 #include <thread> 
 
-// OpenFolderDialog() IS TEMPORARY - TODO: MAKE A NEW EXPLORER FROM SCRATCH
 static std::string OpenFolderDialog()
 {
-    wchar_t exePath[MAX_PATH];
+    // Get the current working directory
+    std::filesystem::path path = std::filesystem::current_path();
 
-    // Get the full path of the current executable
-    DWORD length = GetModuleFileName(NULL, exePath, MAX_PATH);
-
-    if (length == 0)
-    {
-        std::wcerr << L"Failed to get executable path!" << std::endl;
-    }
-
-    std::wstring path = std::wstring(exePath);
-
-    if (path.empty()) NTG_CLIENT_ERROR("The selected Path is Empty!");
-
-    size_t pos = path.find_last_of(L"\\/");
-
-    if (pos != std::wstring::npos)
-    {
-        path = path.substr(0, pos);
-    }
-
-    int backCount = 3;
-    for (int i = 0; i < backCount; i++) {
-        pos = path.find_last_of(L"\\/");
-
-        if (pos != std::wstring::npos) {
-            path = path.substr(0, pos);
+    std::filesystem::path newPath = path;
+    while (newPath.filename().string() != "Nitrogen-Game-Engine") {
+        if (newPath == newPath.root_path()) {
+            std::cerr << "Directory 'Nitrogen-Game-Engine' not found in the path hierarchy!" << std::endl;
+            return "";  
         }
-        else {
-            break;
+        newPath = newPath.parent_path();
+    }
+    std::filesystem::current_path(newPath.string() + "\\Projects");
+
+    std::vector<std::string> ProjectPaths;
+    std::vector<std::string> ProjectNames;
+
+    for (const auto& entry : std::filesystem::directory_iterator(path)) {
+        if (std::filesystem::is_directory(entry.status())) {
+            ProjectPaths.push_back(entry.path().string());
+            ProjectNames.push_back(entry.path().filename().string());
         }
     }
 
-    std::wstring folderName = L"Projects";
+    std::string selectedProject = "";
 
-    if (!path.empty() && path.back() != L'\\' && path.back() != L'/') {
-        path += L"\\";  // Ensure path ends with backslash
-    }
-
-    path += folderName;
-
-    BROWSEINFOW bi = { 0 };
-    bi.lpszTitle = L"Select a Project.";
-
-    if (!path.empty()) {
-        PIDLIST_ABSOLUTE pidlRoot;
-        if (SUCCEEDED(SHParseDisplayName(path.c_str(), NULL, &pidlRoot, 0, NULL))) {
-            bi.pidlRoot = pidlRoot;
-        }
-    }
-
-    PIDLIST_ABSOLUTE pidl = SHBrowseForFolder(&bi);
-    if (pidl != NULL)
-    {
-        wchar_t path[MAX_PATH];
-        if (SHGetPathFromIDList(pidl, path))
+    ImGui::OpenPopup("Open Project");
+    if(ImGui::BeginPopup("Open Project"))
+    { 
+        ImGui::BeginChild("Open Project...", ImVec2(400,200), true);
+        ImGui::TextColored(ImVec4(0.4f, 0.5f, 0.7f, 0.7f), "Open Nitrogen Project...");
+        uint16_t idx = 0;
+        for (std::string project : ProjectNames)
         {
-            std::wstring wstr(path);
-            return std::string(wstr.begin(), wstr.end());  // Return selected folder
+            ImGui::Separator();
+        
+            if (ImGui::Selectable(("  Project " + project).c_str(), false, 0, ImVec2(380, 20)))
+            {
+                selectedProject = ProjectPaths[idx].c_str();
+            }
+
+            idx++;
         }
+        ImGui::Separator();
+
+        ImGui::EndChild();
+        ImGui::EndPopup();
     }
-    return "";  // Return empty string if user cancels
+
+    return selectedProject;
 }
 
 
@@ -114,7 +99,6 @@ namespace Nitrogen {
                 ImGui::EndPopup();
             }
         }
-
 
         void ConsoleTab(const std::string& logFilePath)
         {
@@ -187,6 +171,33 @@ namespace Nitrogen {
 
             // Auto-scroll toggle
             ImGui::Checkbox("Auto-Scroll", &autoScroll);
+
+            ImGui::End();
+        }
+
+
+        void Explorer()
+        {
+            ImGui::Begin("Project Explorer");
+
+            if (m_CurrentProjectPath.empty())
+            {
+                ImGui::Text("No project selected.");
+                ImGui::End();
+                return;
+            }
+
+            ImGui::Text("Project: %s", m_ProjectName.c_str());
+            ImGui::Separator();
+
+            std::filesystem::path fs_currentProjPath = m_CurrentProjectPath + "\\" + m_ProjectName + "\\src";
+
+            // Start displaying the tree from the root project directory
+            if (ImGui::TreeNode(fs_currentProjPath.filename().string().c_str()))
+            {
+                DisplayDirectoryTree(fs_currentProjPath);
+                ImGui::TreePop();
+            }
 
             ImGui::End();
         }
@@ -271,10 +282,56 @@ namespace Nitrogen {
             }
         }
 
+        void DisplayDirectoryTree(const std::filesystem::path& directory)
+        {
+            // Ensure path exists and is a directory
+            if (!std::filesystem::exists(directory) || !std::filesystem::is_directory(directory))
+                return;
+
+            // Separate directories and files
+            std::vector<std::filesystem::path> directories;
+            std::vector<std::filesystem::path> files;
+
+            for (const auto& entry : std::filesystem::directory_iterator(directory))
+            {
+                if (entry.is_directory())
+                    directories.push_back(entry.path());
+                else
+                    files.push_back(entry.path());
+            }
+
+            // Sort directories and files alphabetically
+            std::sort(directories.begin(), directories.end());
+            std::sort(files.begin(), files.end());
+
+            // Display directories first
+            for (const auto& dir : directories)
+            {
+                // Tree node for directories (expandable)
+                ImGui::Separator();
+                ImGui::PushStyleColor(ImGuiCol_Text, ImVec4(0.48f, 0.58f, 0.76f, 1.0f)); // Yellowish color for folders
+                bool opened = ImGui::TreeNode(dir.filename().string().c_str());
+                ImGui::PopStyleColor(); // Restore original text color
+
+                if (opened)
+                {
+                    DisplayDirectoryTree(dir); // Recursively display subdirectories
+                    ImGui::TreePop();
+                }
+
+            }
+
+            // Display files (non-expandable)
+            for (const auto& file : files)
+            {
+                ImGui::Selectable(("    " + file.filename().string()).c_str());
+            }
+        }
+
     private:
         std::string m_CurrentProjectPath = "";
         std::string m_ProjectName = "";
-        std::string m_EditorVersion = "0.0.1b";
+        std::string m_EditorVersion = "0.0.1r";
         int m_SelectedOption = 0;
     };
 }

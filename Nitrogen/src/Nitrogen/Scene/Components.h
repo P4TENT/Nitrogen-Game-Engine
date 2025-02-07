@@ -2,6 +2,8 @@
 
 #include <glm/glm.hpp>
 #include <string.h>
+#include "Nitrogen/Scene/Components.h"
+#include "Nitrogen/Renderer/Texture.h"
 
 namespace Nitrogen {
 
@@ -17,12 +19,12 @@ namespace Nitrogen {
 	};
 
 
-	struct SpriteRendererComponent {
+	struct ColorComponent {
 		glm::vec4 Color = glm::vec4(1.0f);
 
-		SpriteRendererComponent() = default;
-		SpriteRendererComponent(const SpriteRendererComponent&) = default;
-		SpriteRendererComponent(const glm::vec4& color) : Color(color) {}
+		ColorComponent() = default;
+		ColorComponent(const ColorComponent&) = default;
+		ColorComponent(const glm::vec4& color) : Color(color) {}
 	};	
 	
 	
@@ -34,6 +36,13 @@ namespace Nitrogen {
 		TagComponent(const std::string& tag) : Tag(tag) {}
 	};
 
-	
+
+	struct Texture2DComponent {
+		Ref<Texture2D> Texture;
+ 
+		Texture2DComponent() = default;
+		Texture2DComponent(const Texture2DComponent&) = default;
+		Texture2DComponent(const Ref<Texture2D> texture) : Texture(texture) {}
+	};
 
 }

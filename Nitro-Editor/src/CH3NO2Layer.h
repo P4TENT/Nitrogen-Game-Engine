@@ -29,7 +29,6 @@ namespace Nitrogen {
 			RendererCommand::Clear();
 
 			Renderer::BeginScene(m_CameraController.GetCamera());
-            m_ActiveScene->OnUpdate(deltaT);
 			Renderer::EndScene();
 		}
 
@@ -79,11 +78,7 @@ namespace Nitrogen {
                 {           
                     if (ImGui::MenuItem("Open Project"))
                     {
-                        m_CurrentProjectPath = m_ToolsPart.OpenProject();
-                        if (m_CurrentProjectPath != "")
-                        m_ToolsPart.GetRunOption() == 0 ?
-                            m_CurrentProjectLogPath = m_CurrentProjectPath + "\\bin\\Release-windows-x86_64\\" + m_ToolsPart.GetCurrentProjectName() + "\\logs\\Client.log" :
-                            m_CurrentProjectLogPath = m_CurrentProjectPath + "\\bin\\Debug-windows-x86_64\\" + m_ToolsPart.GetCurrentProjectName() + "\\logs\\Client.log";
+                        m_IsOpenProjDialogOpen = true;
                     }
                     ImGui::EndMenu();
                 }
@@ -108,6 +103,18 @@ namespace Nitrogen {
 
             m_ToolsPart.ConsoleTab(m_CurrentProjectLogPath);
 
+            if (m_IsOpenProjDialogOpen)
+            {
+                m_CurrentProjectPath = m_ToolsPart.OpenProject();
+                if (m_CurrentProjectPath != "") m_IsOpenProjDialogOpen = false;
+                if (m_CurrentProjectPath != "")
+                    m_ToolsPart.GetRunOption() == 0 ?
+                    m_CurrentProjectLogPath = m_CurrentProjectPath + "\\bin\\Release-windows-x86_64\\" + m_ToolsPart.GetCurrentProjectName() + "\\logs\\Client.log" :
+                    m_CurrentProjectLogPath = m_CurrentProjectPath + "\\bin\\Debug-windows-x86_64\\" + m_ToolsPart.GetCurrentProjectName() + "\\logs\\Client.log";
+            }
+
+            m_ToolsPart.Explorer();
+
             m_ToolsPart.OnUpdate();
 
             ImGui::End(); // End dockspace
@@ -123,7 +130,7 @@ namespace Nitrogen {
         ToolsPart m_ToolsPart;
         std::string m_CurrentProjectPath = "";
         std::string m_CurrentProjectLogPath = "";
-
-        Ref<Scene> m_ActiveScene;
-	};
+	
+        bool m_IsOpenProjDialogOpen = false;
+    };
 }

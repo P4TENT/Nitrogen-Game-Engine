@@ -14,7 +14,8 @@ public:
 		m_Texture2d = Nitrogen::Texture2D::Create("src/assets/textures/2.png");
 
 		square = m_ActiveScene.CreateEntity("Square");
-		square.AddComponent<Nitrogen::SpriteRendererComponent>(glm::vec4(0.3f,0.7f,0.4f,1.0f));
+		square.AddComponent<Nitrogen::ColorComponent>(glm::vec4(0.3f,0.7f,0.4f,1.0f));
+		square.AddComponent<Nitrogen::Texture2DComponent>(m_Texture2d);
 	}
 
 	void OnUpdate(Nitrogen::Timestep deltaT) override
@@ -32,14 +33,14 @@ public:
 		
 		{
 			static float rotation = 0.0f;
-			rotation += deltaT * 50.0f;
+			rotation += deltaT * 10.0f;
 
 			NTG_PROFILE_SCOPE("Renderer Draw");
 			Nitrogen::Renderer2D::BeginScene(m_CameraController.GetCamera());
-			Nitrogen::Renderer2D::DrawRotatedQuad({ 1.0f, 0.0f }, { 0.8f, 0.8f }, -45.0f, square.GetComponent<Nitrogen::SpriteRendererComponent>().Color);
+			Nitrogen::Renderer2D::DrawRotatedQuad({ 1.0f, 0.0f }, { 0.8f, 0.8f }, -45.0f, square.GetComponent<Nitrogen::ColorComponent>().Color);
 			Nitrogen::Renderer2D::DrawQuad({ -1.0f, 0.0f }, { 0.8f, 0.8f }, { 0.8f, 0.2f, 0.3f, 1.0f });
 			Nitrogen::Renderer2D::DrawQuad({ 0.5f, -0.5f }, { 0.5f, 0.75f }, { 0.2f, 0.3f, 0.8f, 1.0f });
-			Nitrogen::Renderer2D::DrawQuad({ 0.0f, 0.0f, -0.1f }, { 20.0f, 20.0f }, m_Texture2d, 10.0f);
+			Nitrogen::Renderer2D::DrawQuad({ 0.0f, 0.0f, -0.1f }, { 20.0f, 20.0f }, square.GetComponent<Nitrogen::Texture2DComponent>().Texture, 1.0f);
 			Nitrogen::Renderer2D::DrawRotatedQuad({ -2.0f, 0.0f, 0.0f }, { 1.0f, 1.0f }, rotation, m_Texture2d, 20.0f);
 			Nitrogen::Renderer2D::EndScene();
 
@@ -73,6 +74,7 @@ public:
 	void OnEvent(Nitrogen::Event& e) override
 	{
 		m_CameraController.OnEvent(e);
+		NTG_CLIENT_WARN("EVENT");
 	}
 
 private:
