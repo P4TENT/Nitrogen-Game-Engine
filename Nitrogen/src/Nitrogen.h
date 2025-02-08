@@ -64,6 +64,7 @@
 // |	- Renderer/VertexArray.h									|
 // |	- Renderer/OrthographicCamera.h								|
 // |	- Renderer/OrthographicCameraController.h					|
+// |	- Renderer/PerspectiveCamera.h								|
 // |	- Renderer/Texture.h										|
 // |================================================================|
 #include "Nitrogen/Renderer/GraphicsContext.h"
@@ -81,6 +82,10 @@
 // |================================================================|
 #include "Nitrogen/Renderer/OrthographicCamera.h"
 #include "Nitrogen/Renderer/OrthographicCameraController.h"
+// |================================================================|
+// | Perspective Camera												|
+// |================================================================|
+#include "Nitrogen/Renderer/PerspectiveCamera.h"
 // |================================================================|
 // | Texutre														|
 // |================================================================|

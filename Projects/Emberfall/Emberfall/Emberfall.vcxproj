@@ -143,11 +143,11 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="src\GameLayer.cpp" />
-    <ClCompile Include="src\main.cpp" />
+    <ClInclude Include="src\game\GameLayer.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\GameLayer.h" />
+    <ClCompile Include="src\game\GameLayer.cpp" />
+    <ClCompile Include="src\main.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -1,19 +1,24 @@
 #include <Nitrogen.h>
 #include <Nitrogen/Core/EntryPoint.h>
 
-#include "GameLayer.h"
+#include "game/GameLayer.h"
 
-class Emberfall : public Nitrogen::Application
+class ProjectApplication : public Nitrogen::Application
 {
 public:
-	Emberfall()
-		: Application("Emberfall")
+	ProjectApplication()
+		: Nitrogen::Application("Emberfall")
 	{
-		PushLayer(new GameLayer());
+		PushLayer(new Emberfall::GameLayer());
+	}
+
+	~ProjectApplication()
+	{
+
 	}
 };
 
 Nitrogen::Application* Nitrogen::CreateApplication()
 {
-	return new Emberfall();
+	return new ProjectApplication();
 }

@@ -167,6 +167,7 @@
     </ClInclude>
     <ClInclude Include="src\Nitrogen\Scene\Components.h" />
     <ClInclude Include="src\Nitrogen\Scene\Entity.h" />
+    <ClInclude Include="src\Nitrogen\Renderer\PerspectiveCamera.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Nitrogen\Core\CoreApp.cpp">
@@ -250,5 +251,6 @@
     <ClCompile Include="vendor\stb_image\stb_image.cpp">
       <Filter>vendor\stb_image</Filter>
     </ClCompile>
+    <ClCompile Include="src\Nitrogen\Renderer\PerspectiveCamera.cpp" />
   </ItemGroup>
 </Project>

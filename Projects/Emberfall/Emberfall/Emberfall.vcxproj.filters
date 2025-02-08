@@ -6,10 +6,14 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\GameLayer.h" />
+    <ClInclude Include="src\game\GameLayer.h">
+      <Filter>game</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\game\GameLayer.cpp">
+      <Filter>game</Filter>
+    </ClCompile>
     <ClCompile Include="src\main.cpp" />
-    <ClCompile Include="src\GameLayer.cpp" />
   </ItemGroup>
 </Project>
