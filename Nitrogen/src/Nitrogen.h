@@ -10,7 +10,6 @@
 // |  - Core/CoreApp.h												|
 // |  - Core/Timestep.h												|
 // |  - Core/Log.h													|
-// |  - Core/EntryPoint.h											|
 // |  - Core/Layer.h												|
 // |  - Core/LayerStack.h											|
 // |  - Core/Input/Input.h											|
@@ -25,10 +24,6 @@
 #include "Nitrogen/Core/CoreApp.h"
 #include "Nitrogen/Core/Timestep.h"
 #include "Nitrogen/Core/Log.h"
-// |================================================================|
-// | Entry Point													|
-// |================================================================|
-#include "Nitrogen/Core/EntryPoint.h"
 // |================================================================|
 // | Layer Stack												    |
 // |================================================================|

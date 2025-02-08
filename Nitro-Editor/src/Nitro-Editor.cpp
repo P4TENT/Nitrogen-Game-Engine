@@ -1,4 +1,5 @@
 #include <Nitrogen.h>
+#include <Nitrogen/Core/EntryPoint.h>
 
 #include "CH3NO2Layer.h"
 

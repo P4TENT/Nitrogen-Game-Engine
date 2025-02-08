@@ -141,7 +141,9 @@
     <ClInclude Include="src\ToolsPart.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\CH3NO2Layer.cpp" />
     <ClCompile Include="src\Nitro-Editor.cpp" />
+    <ClCompile Include="src\ToolsPart.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Nitrogen\Nitrogen.vcxproj">

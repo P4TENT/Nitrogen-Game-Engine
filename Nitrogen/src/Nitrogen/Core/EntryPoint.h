@@ -1,6 +1,7 @@
 #pragma once
 
 #include "Nitrogen/Core/Core.h"
+#include "Nitrogen/Core/CoreApp.h"
 
 #ifdef NTG_PLATFORM_WINDOWS
 
